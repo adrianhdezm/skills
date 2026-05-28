@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write A PRD"
+  short_description: "Draft implementation-ready PRDs from product ideas"
+  default_prompt: "Use $write-a-prd to clarify the feature, inspect local project context, and write an implementation-ready PRD in docs/prd."
