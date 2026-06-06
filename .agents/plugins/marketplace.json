@@ -1,11 +1,11 @@
 {
-  "name": "ADH-Tools",
+  "name": "built-by-adh",
   "interface": {
-    "displayName": "ADH Tools"
+    "displayName": "Built by ADH"
   },
   "plugins": [
     {
-      "name": "built-by-adh",
+      "name": "cortex",
       "source": {
         "source": "url",
         "url": "https://github.com/adrianhdezm/skills.git",
