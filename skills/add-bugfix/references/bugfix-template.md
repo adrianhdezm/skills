@@ -104,7 +104,7 @@
 
 ## Final Validation
 
-- [ ] Work item passed `validate-work-item`.
+- [ ] Work item passed `validate-work-plan`.
 - [ ] Reproduction evidence proves the bug exists or explains why deterministic reproduction is not practical.
 - [ ] Fixed behavior satisfies expected behavior.
 - [ ] Unchanged behavior and regression boundaries still pass.

@@ -1,13 +1,13 @@
 ---
-name: validate-work-item
-description: Validate one story or bugfix file before implementation. Use after `add-story` or `add-bugfix` to confirm the work item fits its epic, has concrete implementation tasks, and includes executable verification without blocking gaps.
+name: validate-work-plan
+description: Validate one story or bugfix work plan before implementation. Use after `add-story` or `add-bugfix` to confirm the planned work fits its epic, has concrete implementation tasks, and includes executable verification without blocking gaps.
 ---
 
-# Validate Work Item
+# Validate Work Plan
 
 ## Core Rule
 
-Validate the written story or bugfix, not memory. Confirm exactly one work item is ready to feed `implement-work-item`: it fits the epic, has complete implementation tasks, concrete verification, and no blocking open questions. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Validate the written story or bugfix plan, not memory. Confirm exactly one work plan is ready to feed `implement-work-item`: it fits the epic, has complete implementation tasks, concrete verification, and no blocking open questions. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -20,11 +20,11 @@ Validate the written story or bugfix, not memory. Confirm exactly one work item 
    - Check that the work item stays inside epic scope and does not contradict the PRD, epic, concern specs, or sibling work items.
    - Check that any scope change, public behavior change, rollout change, or material risk is reflected in `epic.md`; otherwise mark the item `Blocked` or `Fail`.
 
-3. Validate work item quality:
+3. Validate work plan readiness:
    - For stories, check acceptance criteria, regression boundaries, implementation tasks, verification matrix, assumptions, and open questions.
    - For bugfixes, check current behavior, expected behavior, unchanged behavior, reproduction evidence, root cause, fix boundary, regression risks, implementation tasks, and verification matrix.
    - Check that every implementation task has purpose, scope, dependencies, verification steps, and pass criteria.
-   - Check that verification methods are concrete enough to execute during `run-validation`.
+   - Check that verification methods are concrete enough to execute during `validate-implementation`.
 
 4. Update validation status:
    - Update the work item's `Work Item Validation` section with evidence, gaps, skipped checks, and a decision: `Pass`, `Fail`, `Partial`, or `Blocked`.
@@ -43,4 +43,4 @@ Validate the written story or bugfix, not memory. Confirm exactly one work item 
 - [ ] Every implementation task has concrete verification and pass criteria.
 - [ ] Blocking open questions are resolved or recorded as `Blocked`.
 - [ ] Result includes an overall decision: `Pass`, `Fail`, `Partial`, or `Blocked`.
-- [ ] Passing work item can feed `implement-work-item`.
+- [ ] Passing work plan can feed `implement-work-item`.

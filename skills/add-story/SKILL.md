@@ -1,6 +1,6 @@
 ---
 name: add-story
-description: Add or extend one validated epic with a scoped story file under `docs/epics/active/<epic>/stories/story_<name>.md`. Use when an active epic needs a new planned value slice, missing in-scope coverage, or an extension that should be implemented independently.
+description: Add or extend one validated epic with one scoped story file under `docs/epics/active/<epic>/stories/story_<name>.md`. Use when the user has chosen a specific planned value slice to create. Use `suggest-stories` first when the user wants to discover or plan multiple stories for an epic.
 ---
 
 # Add Story
@@ -15,6 +15,7 @@ Add exactly one story to an existing active epic. A story is the implementation 
    - Read `docs/epics/active/<epic>/epic.md` and its source `docs/prd/<feature>.md`.
    - Read existing `stories/story_*.md` and `bugfixes/bugfix_*.md` in the epic.
    - Inspect relevant code, tests, docs, and concern specs.
+   - If the user asks to plan or create all stories needed for the epic, recommend `suggest-stories` before creating files.
 
 2. Confirm fit:
    - Verify the requested story is within the epic scope.
@@ -29,7 +30,7 @@ Add exactly one story to an existing active epic. A story is the implementation 
 
 4. Report result:
    - Provide the absolute story path.
-   - Summarize epic fit, assumptions, first implementation task, and recommend `validate-work-item`.
+   - Summarize epic fit, assumptions, first implementation task, and recommend `validate-work-plan`.
 
 ## Validation Checklist
 
@@ -38,4 +39,4 @@ Add exactly one story to an existing active epic. A story is the implementation 
 - [ ] Non-goals and regression boundaries are explicit where relevant.
 - [ ] Implementation tasks are ordered, concrete, and independently checkable.
 - [ ] Verification includes commands or evidence methods with pass criteria.
-- [ ] Story can feed `validate-work-item`.
+- [ ] Story can feed `validate-work-plan`.

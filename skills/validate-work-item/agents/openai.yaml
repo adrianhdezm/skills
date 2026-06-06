@@ -1,4 +1,0 @@
-interface:
-  display_name: "Validate Work Item"
-  short_description: "Check story or bugfix readiness"
-  default_prompt: "Use $validate-work-item to verify one story or bugfix fits its epic and has complete implementation tasks and verification before coding."

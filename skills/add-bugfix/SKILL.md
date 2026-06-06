@@ -28,7 +28,7 @@ Add exactly one bugfix to an existing active epic. A bugfix is the implementatio
 
 4. Report result:
    - Provide the absolute bugfix path.
-   - Summarize root cause confidence, fix boundary, reproduction evidence, assumptions, and recommend `validate-work-item`.
+   - Summarize root cause confidence, fix boundary, reproduction evidence, assumptions, and recommend `validate-work-plan`.
 
 ## Validation Checklist
 
@@ -37,4 +37,4 @@ Add exactly one bugfix to an existing active epic. A bugfix is the implementatio
 - [ ] Unchanged behavior protects regression-sensitive paths.
 - [ ] Root cause and fix boundary are specific enough for surgical implementation.
 - [ ] Implementation tasks include repro, fix, and regression verification.
-- [ ] Bugfix can feed `validate-work-item`.
+- [ ] Bugfix can feed `validate-work-plan`.

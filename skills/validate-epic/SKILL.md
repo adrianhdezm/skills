@@ -1,6 +1,6 @@
 ---
 name: validate-epic
-description: Validate one active epic plan against its source PRD before adding stories or bugfixes. Use after `create-epic` and before `add-story` or `add-bugfix` to confirm the epic fits the PRD, is end-to-end, avoids unapproved scope, is not too technical, and is ready for child work.
+description: Validate one active epic plan against its source PRD before suggesting or adding stories or bugfixes. Use after `create-epic` and before `suggest-stories`, `add-story`, or `add-bugfix` to confirm the epic fits the PRD, is end-to-end, avoids unapproved scope, is not too technical, and is ready for child work.
 ---
 
 # Validate Epic
@@ -36,11 +36,13 @@ Validate one epic plan against the written PRD, not memory. Confirm the epic pre
 5. Update epic validation status:
    - Add or update the validation section in the target epic file.
    - Record coverage evidence, gaps, skipped checks, and a decision: `Pass`, `Fail`, `Partial`, or `Blocked`.
-   - Do not create story or bugfix files; child work item planning belongs to `add-story` and `add-bugfix`.
+   - Do not create story or bugfix files; child work item planning belongs to `suggest-stories`, `add-story`, and `add-bugfix`.
 
 6. Report result:
    - Summarize validation outcome, this epic's PRD fit, inconsistencies, blocking open questions, and ADRs created.
-   - Recommend `add-story` or `add-bugfix` when the epic result is `Pass`; recommend `create-epic` edits for this epic's gaps or `suggest-epics` for broader PRD decomposition gaps.
+   - Recommend `suggest-stories` when the epic result is `Pass` and the next story has not been chosen.
+   - Recommend `add-story` or `add-bugfix` when the epic result is `Pass` and the requested child work is already specific.
+   - Recommend `create-epic` edits for this epic's gaps or `suggest-epics` for broader PRD decomposition gaps.
 
 ## Validation Checklist
 

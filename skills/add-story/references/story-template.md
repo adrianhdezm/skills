@@ -67,7 +67,7 @@ Use EARS notation where possible.
 
 ## Final Validation
 
-- [ ] Work item passed `validate-work-item`.
+- [ ] Work item passed `validate-work-plan`.
 - [ ] All implementation task verification passed.
 - [ ] Every acceptance criterion has matching verification evidence.
 - [ ] Every regression boundary has matching verification evidence.

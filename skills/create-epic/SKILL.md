@@ -7,7 +7,7 @@ description: Create exactly one active epic plan under `docs/epics/active/<epic>
 
 ## Core Rule
 
-Create exactly one epic for a user-selected part of a PRD. The required flow is `create-prd -> create-epic -> validate-epic -> add-story or add-bugfix`; `create-epic` must not slice the whole PRD, create sibling epics, or create child work item files. Each `docs/epics/active/<epic>/epic.md` owns one end-to-end delivery outcome and can later contain independently validated stories and bugfixes. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Create exactly one epic for a user-selected part of a PRD. The required flow is `create-prd -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix`; `create-epic` must not slice the whole PRD, create sibling epics, or create child work item files. Each `docs/epics/active/<epic>/epic.md` owns one end-to-end delivery outcome and can later contain independently validated stories and bugfixes. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 

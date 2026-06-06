@@ -1,4 +1,4 @@
 interface:
   display_name: "Validate Epic"
   short_description: "Validate one active epic"
-  default_prompt: "Use $validate-epic to verify one active epic fits its source PRD, is end-to-end, and is ready for stories or bugfixes."
+  default_prompt: "Use $validate-epic to verify one active epic fits its source PRD, is end-to-end, and is ready for story suggestions or child work."

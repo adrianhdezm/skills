@@ -7,7 +7,7 @@ description: Define why work exists by turning ideas, problems, or business requ
 
 ## Core Rule
 
-Ground every PRD in product intent, local repository context, and concern knowledge. The required flow is `create-prd -> create-epic -> validate-epic -> add-story or add-bugfix -> validate-work-item`; use `suggest-epics` first when the user needs brainstorming, PRD decomposition, or gap discovery. Features drive change; the PRD defines why the feature should exist, not the final implementation or verification strategy. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Ground every PRD in product intent, local repository context, and concern knowledge. The required flow is `create-prd -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix -> validate-work-plan`; use `suggest-epics` first when the user needs brainstorming, PRD decomposition, or gap discovery. Features drive change; the PRD defines why the feature should exist, not the final implementation or verification strategy. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 

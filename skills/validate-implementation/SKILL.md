@@ -1,13 +1,13 @@
 ---
-name: run-validation
-description: Validate implemented code against one story or bugfix and repository quality gates, then update that work item with results. Use after `implement-work-item` when implementation is complete or partially complete and the active epic needs objective validation before state evolution or archiving.
+name: validate-implementation
+description: Validate implemented code against one story or bugfix work plan and repository quality gates, then update that work item with results. Use after `implement-work-item` when implementation is complete or partially complete and the active epic needs objective validation before state evolution or archiving.
 ---
 
-# Run Validation
+# Validate Implementation
 
 ## Core Rule
 
-Validate against the written work item, not memory. Verify that implemented code covers one story or bugfix, its implementation task verification, verification matrix, required tests, and repository quality gates. Record `Pass`, `Fail`, `Partial`, or `Blocked`, and report verification gaps instead of inventing new criteria. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Validate implemented work against the written story or bugfix plan, not memory. Verify that implemented code covers the plan, its implementation task verification, verification matrix, required tests, and repository quality gates. Record `Pass`, `Fail`, `Partial`, or `Blocked`, and report verification gaps instead of inventing new criteria. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -17,7 +17,7 @@ Validate against the written work item, not memory. Verify that implemented code
    - Inspect package scripts, CI config, test files, benchmark scripts, migrations, and runbooks referenced by the work item.
    - Check repository status to understand implementation scope and uncommitted changes.
 
-2. Validate work-item-to-code coverage:
+2. Validate plan-to-code coverage:
    - Check that code, tests, migrations, configuration, documentation, and operational changes cover every completed implementation task.
    - Check that acceptance criteria, expected behavior, unchanged behavior, and pass criteria are satisfied by executable checks or documented evidence.
    - Check that every verification matrix row has a result.
@@ -36,8 +36,8 @@ Validate against the written work item, not memory. Verify that implemented code
    - Include unresolved failures and recommended remediation tasks in the selected work item.
 
 5. Report result:
-   - Summarize validation outcome, work-item-to-code coverage, failed or skipped checks, and quality gate results.
-   - Recommend `document-current-system` when the result is `Pass`, or when a `Partial` result is explicitly approved for current-state documentation; otherwise recommend `implement-work-item`, `validate-work-item`, or the artifact skill needed to fix the gap.
+   - Summarize validation outcome, plan-to-code coverage, failed or skipped checks, and quality gate results.
+   - Recommend `document-current-system` when the result is `Pass`, or when a `Partial` result is explicitly approved for current-state documentation; otherwise recommend `implement-work-item`, `validate-work-plan`, or the artifact skill needed to fix the gap.
 
 ## Validation Checklist
 

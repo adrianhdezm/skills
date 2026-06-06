@@ -16,7 +16,7 @@
   "interface": {
     "displayName": "Cortex",
     "shortDescription": "Run concern-centric product and system change workflows.",
-    "longDescription": "Cortex packages a full Codex delivery process: create PRDs from product intent, suggest candidate epics when decomposition is needed, create executable epics one at a time, add scoped stories and surgical bugfixes inside active epics, validate one work item at a time, implement scoped changes, run objective validation, document current system knowledge, capture durable decisions as ADRs, and archive completed epic history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
+    "longDescription": "Cortex packages a full Codex delivery process: create PRDs from product intent, suggest candidate epics when decomposition is needed, create executable epics one at a time, suggest story candidates inside active epics, add scoped stories and surgical bugfixes, validate work plans before coding, implement scoped changes, validate implementations against quality gates, document current system knowledge, capture durable decisions as ADRs, and archive completed epic history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
     "developerName": "Adrian Hernandez Mendez",
     "category": "Developer Tools",
     "capabilities": [
