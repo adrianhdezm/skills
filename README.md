@@ -25,6 +25,18 @@ the supporting process documentation.
   validation evidence, updates durable system knowledge, and archives completed
   epic history. Read [CORTEX.md](CORTEX.md) for the full process.
 
+## Install From GitHub
+
+Cortex is distributed through the repo marketplace at
+`.agents/plugins/marketplace.json`.
+
+```bash
+codex plugin marketplace add adrianhdezm/skills --ref main
+```
+
+After adding the marketplace, restart Codex and install Cortex from the ADH
+Tools marketplace.
+
 ## Skills
 
 - `create-prd` - define product intent.

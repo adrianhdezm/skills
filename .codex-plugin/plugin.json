@@ -5,13 +5,20 @@
   "author": {
     "name": "Adrian Hernandez Mendez"
   },
+  "repository": "https://github.com/adrianhdezm/skills",
+  "keywords": [
+    "codex",
+    "skills",
+    "planning",
+    "development-workflow"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Cortex",
     "shortDescription": "Run concern-centric product and system change workflows.",
     "longDescription": "Cortex packages a full Codex delivery process: create PRDs from product intent, slice them into executable epics, validate epic and task coverage, implement scoped tasks, run objective validation, document current system knowledge, capture durable decisions as ADRs, and archive completed epic history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
     "developerName": "Adrian Hernandez Mendez",
-    "category": "Productivity",
+    "category": "Developer Tools",
     "capabilities": [
       "PRD Planning",
       "Epic Planning",
