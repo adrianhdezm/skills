@@ -1,8 +1,9 @@
 # Cortex
 
 Cortex is a concern-centric development process for planned product and system
-changes. It turns product intent into PRDs, suggests epic and story options when
-decomposition is needed, creates validated epics one at a time, adds
+changes. It turns product intent into a single Product Vision, suggests epic
+and story options when decomposition is needed, creates validated epics one at a
+time, adds
 independently validated stories and bugfixes inside those epics, implements one
 work item at a time, records validation evidence, updates durable system
 knowledge, and archives completed epic history.
@@ -16,7 +17,8 @@ artifact instead of relying on memory or conversation context.
 Generated project artifacts are written into the target repository that is being
 planned or changed, not into the skills repository:
 
-- `docs/prd/` - product requirements documents created by `create-prd`.
+- `docs/product-vision.md` - the single project-level product vision created or
+  updated by `define-product-vision`.
 - `docs/epics/active/<epic>/epic.md` - active epic plans created by
   `create-epic`.
 - `docs/epics/active/<epic>/stories/story_<name>.md` - planned value slices
@@ -35,7 +37,7 @@ planned or changed, not into the skills repository:
 Use this sequence for planned product or system changes:
 
 ```text
-create-prd
+define-product-vision
   -> suggest-epics optional
   -> create-epic
   -> validate-epic
@@ -48,7 +50,7 @@ create-prd
   -> archive-epic
 ```
 
-`document-decisions` is used when a PRD, epic, story, bugfix, implementation, or
+`document-decisions` is used when a Product Vision, epic, story, bugfix, implementation, or
 validation result exposes an important durable decision that future maintainers
 must understand. It is not a mandatory step for every change.
 
@@ -65,7 +67,7 @@ feedback, stakeholder notes, a problem statement, or a feature idea. This is the
 default Cortex flow:
 
 ```text
-create-prd
+define-product-vision
   -> suggest-epics optional
   -> create-epic
   -> validate-epic
@@ -74,7 +76,9 @@ create-prd
   -> validate-work-plan
 ```
 
-The PRD captures product intent and EARS-style acceptance criteria.
+The Product Vision captures stable project-level product intent, audience,
+goals, success signals, principles, constraints, non-goals, assumptions, and
+open questions.
 `suggest-epics` helps discover candidate delivery boundaries when needed.
 `create-epic` turns one accepted focus into a durable active epic, and stories
 turn one validated epic into executable value slices. `suggest-stories` helps
@@ -82,22 +86,22 @@ plan those value slices before story files are created.
 
 Example prompts:
 
-- "Use Cortex requirements-first to create a PRD for team invite links that
-  expire after seven days."
-- "Create a PRD for improving checkout retry behavior. Ask only for blocking
-  clarifications, inspect the repo, and include EARS acceptance criteria."
-- "Turn this stakeholder note into a Cortex PRD, then stop before creating
-  epics: <paste note>"
+- "Use Cortex requirements-first to define the project Product Vision from this
+  stakeholder note, then stop before creating epics: <paste note>"
+- "Update the Product Vision for improving checkout retry behavior only if it
+  changes durable product direction; otherwise suggest epic options."
+- "Define the Product Vision for this project. Ask only for blocking
+  clarifications and inspect the repo."
 
 ### Design-Informed
 
 Use design-informed planning when the work starts from an existing technical
 design, architecture sketch, pseudocode, migration plan, integration proposal,
-or feasibility constraint. Start with `create-prd`, but treat the design as a
-source to derive product requirements, acceptance criteria, constraints,
-non-goals, and affected concerns before epic planning begins.
+or feasibility constraint. Start with `define-product-vision`, but treat the design as a
+source to derive product intent, constraints, non-goals, assumptions, and open
+questions before epic planning begins.
 
-The PRD must distinguish behavior the design requires from implementation
+The Product Vision must distinguish behavior the design requires from implementation
 details that belong in epics and child work items. If the design implies product
 behavior that is not approved, record it as an open question or assumption
 instead of silently turning it into scope.
@@ -105,18 +109,18 @@ instead of silently turning it into scope.
 Example prompts:
 
 - "Use Cortex design-informed planning. Start from this architecture sketch,
-  derive the product requirements, and keep implementation details in the epic:
+  derive the product vision, and keep implementation details in the epic:
   <paste design>"
-- "Create a PRD from this migration proposal. Separate required user-visible
-  behavior from suggested implementation details: <paste proposal>"
-- "I have a low-level design for rate limiting. Use it as input to create the
-  PRD first, then recommend the next Cortex step."
+- "Update the Product Vision from this migration proposal. Separate required
+  user-visible behavior from suggested implementation details: <paste proposal>"
+- "I have a low-level design for rate limiting. Use it as input to define or
+  update the Product Vision first, then recommend the next Cortex step."
 
 ### Quick Plan
 
 Use quick plan only for well-understood, low-risk work where the user explicitly
 wants to move quickly and the repository context is clear. Quick plan may run
-`create-prd`, `create-epic`, and `add-story` in one continuous planning pass,
+`define-product-vision`, `create-epic`, and `add-story` in one continuous planning pass,
 but it must still write all artifacts and leave validation sections accurate.
 
 Validation gates are not skipped. If quick plan creates an epic or work items
@@ -127,8 +131,9 @@ accepts the risk of proceeding with an unvalidated plan. Quick plan can skip
 
 Example prompts:
 
-- "Use Cortex quick plan for a small settings-page copy update. Create the PRD,
-  epic, and story in one pass, leaving validation pending."
+- "Use Cortex quick plan for a small settings-page copy update. Use the existing
+  Product Vision, then create the epic and story in one pass, leaving validation
+  pending."
 - "Quick-plan this straightforward API field rename. Inspect the repo first and
   write all Cortex artifacts before implementation."
 - "Create a quick Cortex plan for adding a feature flag around the new banner.
@@ -173,39 +178,42 @@ scope, update the epic and re-run `validate-epic` first.
 
 ### 1. Define Product Intent
 
-Use `create-prd` when work starts from an idea, business request, problem,
+Use `define-product-vision` when work starts from an idea, business request, problem,
 stakeholder note, design, screenshot, or unstructured feature ask.
 
-The PRD defines why the work exists: problem, users, goals, success criteria,
-EARS-style acceptance criteria, constraints, non-goals, affected concerns,
-assumptions, open questions, dependencies, risks, and references. It should
-mention likely surfaces only as product context. Final implementation details
-belong in epics, stories, and bugfixes.
+The Product Vision defines durable project direction: vision, problem,
+audience, goals, success signals, principles, constraints, non-goals,
+assumptions, open questions, and references. It should stay strategic and avoid
+feature scope, acceptance criteria, implementation details, verification plans,
+dependencies, rollout plans, and risk registers. Those details belong in epics,
+stories, and bugfixes.
+There is only one Product Vision per project; update `docs/product-vision.md`
+only when the stable product direction changes.
 
-Output: `docs/prd/<feature>.md`.
+Output: `docs/product-vision.md`.
 
 ### 2. Suggest Epic Options
 
-Use `suggest-epics` after the PRD is ready when the user wants brainstorming,
+Use `suggest-epics` after the Product Vision is ready when the user wants brainstorming,
 vision slicing, gap discovery, or candidate epic suggestions.
 
-This skill reads the PRD, current system knowledge, existing active epics,
-relevant archived epics, and archive summaries, then suggests candidate
+This skill reads the Product Vision, current system knowledge, existing active
+epics, relevant archived epics, and archive summaries, then suggests candidate
 end-to-end epic boundaries. Archived epics are used to avoid duplicating
 completed, cancelled, superseded, or intentionally deferred work without making
 that reopening explicit. It does not write epic files unless the user accepts a
 specific suggestion and asks to proceed with `create-epic`.
 
-Output: suggested epic candidates, PRD coverage notes, overlap risks,
+Output: suggested epic candidates, Product Vision coverage notes, overlap risks,
 dependencies, sequencing, assumptions, and open questions.
 
 ### 3. Create One Epic
 
-Use `create-epic` after the PRD is ready and the user has selected one specific
+Use `create-epic` after the Product Vision is ready and the user has selected one specific
 delivery outcome to plan.
 
 Each epic owns one independently buildable delivery outcome. The epic records
-PRD coverage role, scope, current system context, concern impact, dependencies,
+Product Vision coverage role, scope, current system context, concern impact, dependencies,
 cross-epic relationships, risks, rollout, implementation strategy, assumptions,
 open questions, and ADR candidates. The epic is a durable container; child
 stories and bugfixes can be added over time.
@@ -217,11 +225,11 @@ Output: `docs/epics/active/<epic>/epic.md`.
 Use `validate-epic` before adding child stories or bugfixes.
 
 Validation checks exactly one active epic at a time. It confirms the epic
-preserves the PRD intent for its selected focus, owns an end-to-end delivery
+preserves the Product Vision intent for its selected focus, owns an end-to-end delivery
 outcome, is not too technical, avoids unapproved scope, stays consistent with
 concern knowledge, and has no blocking open questions. It does not validate
-whole-PRD coverage across all epics; use `suggest-epics` for broader PRD gap
-discovery and candidate epic suggestions. A passing epic can accept stories and
+whole Product Vision coverage across all epics; use `suggest-epics` for broader
+Product Vision gap discovery and candidate epic suggestions. A passing epic can accept stories and
 bugfixes. A failed, partial, or blocked epic should be corrected before child
 work items are created.
 
@@ -233,7 +241,7 @@ Use `suggest-stories` after `validate-epic` when the user wants to plan the
 story set needed to fulfill one active epic, find missing child-work coverage,
 or choose the next independently implementable value slice.
 
-This skill reads one active epic, its source PRD when present, existing stories
+This skill reads one active epic, its source Product Vision when present, existing stories
 and bugfixes in the epic, concern knowledge, and relevant repository context. It
 suggests candidate story boundaries without writing files. Accepted candidates
 are created later with `add-story`, one story at a time. Defect fixes should be
@@ -263,7 +271,7 @@ Outputs:
 Use `validate-work-plan` before implementation starts.
 
 Validation checks that one story or bugfix plan fits the epic, preserves scope,
-includes executable verification, and does not contradict the PRD, epic, concern
+includes executable verification, and does not contradict the Product Vision, epic, concern
 knowledge, or sibling work items. Passing work plans can feed
 `implement-work-item`.
 
@@ -290,7 +298,7 @@ plus updated work item status where appropriate.
 Use `validate-implementation` after implementation is complete or ready for objective
 checking.
 
-Validation checks implemented work against the written PRD when present, epic,
+Validation checks implemented work against the written Product Vision when present, epic,
 selected story or bugfix plan, implementation task verification steps,
 verification matrix rows, and repository quality gates. It records pass, fail,
 partial, blocked, skipped checks, command output, evidence, and gaps in the

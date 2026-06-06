@@ -13,7 +13,7 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
 
 1. Load the plan:
    - Read one `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`.
-   - Read `docs/epics/active/<epic>/epic.md`, its source PRD when present, and relevant `docs/knowledge/` concern specs.
+   - Read `docs/epics/active/<epic>/epic.md`, its source Product Vision when present, and relevant `docs/knowledge/` concern specs.
    - Confirm the work item passed `validate-work-plan`, or record the user's explicit override and risk.
    - Check repository status and avoid overwriting unrelated user changes.
    - Extract requirements, expected behavior, unchanged behavior, constraints, implementation tasks, verification steps, and out-of-scope behavior.

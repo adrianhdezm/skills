@@ -13,11 +13,11 @@ Validate the written story or bugfix plan, not memory. Confirm exactly one work 
 
 1. Load validation context:
    - Read one `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`.
-   - Read `docs/epics/active/<epic>/epic.md` and its source PRD when present.
+   - Read `docs/epics/active/<epic>/epic.md` and its source Product Vision when present.
    - Read relevant concern specs, sibling stories, sibling bugfixes, and code evidence when they affect scope or verification.
 
 2. Validate epic fit:
-   - Check that the work item stays inside epic scope and does not contradict the PRD, epic, concern specs, or sibling work items.
+   - Check that the work item stays inside epic scope and does not contradict the Product Vision, epic, concern specs, or sibling work items.
    - Check that any scope change, public behavior change, rollout change, or material risk is reflected in `epic.md`; otherwise mark the item `Blocked` or `Fail`.
 
 3. Validate work plan readiness:
@@ -37,7 +37,7 @@ Validate the written story or bugfix plan, not memory. Confirm exactly one work 
 
 ## Validation Checklist
 
-- [ ] Work item fits the active epic and source PRD when present.
+- [ ] Work item fits the active epic and source Product Vision when present.
 - [ ] Work item does not contradict sibling stories or bugfixes.
 - [ ] Every acceptance, expected behavior, or unchanged behavior criterion has verification coverage.
 - [ ] Every implementation task has concrete verification and pass criteria.

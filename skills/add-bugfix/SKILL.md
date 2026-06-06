@@ -12,7 +12,7 @@ Add exactly one bugfix to an existing active epic. A bugfix is the implementatio
 ## Workflow
 
 1. Load inputs:
-   - Read `docs/epics/active/<epic>/epic.md` and its source `docs/prd/<feature>.md` when present.
+   - Read `docs/epics/active/<epic>/epic.md` and its source `docs/product-vision.md` when present.
    - Read existing `stories/story_*.md` and `bugfixes/bugfix_*.md` in the epic.
    - Inspect relevant code, tests, logs, issue reports, docs, and concern specs.
 

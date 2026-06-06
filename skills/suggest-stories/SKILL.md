@@ -13,12 +13,12 @@ Suggest candidate story boundaries for exactly one active epic; do not create or
 
 1. Load inputs:
    - Read exactly one `docs/epics/active/<epic>/epic.md`.
-   - Read the source PRD when present.
+   - Read the source Product Vision when present.
    - Read existing `stories/story_*.md` and `bugfixes/bugfix_*.md` in the epic.
    - Read relevant `docs/knowledge/` concern specs and inspect code, tests, or docs enough to understand current system boundaries.
 
 2. Analyze epic fulfillment:
-   - Map the epic's intent, in-scope items, PRD coverage role, risks, rollout, and validation gaps to existing stories and bugfixes.
+   - Map the epic's intent, in-scope items, Product Vision coverage role, risks, rollout, and validation gaps to existing stories and bugfixes.
    - Identify already-planned work, partial coverage, missing value slices, sequencing constraints, regression boundaries, and duplicated ownership.
    - Distinguish planned value slices from corrective defect work. Recommend `add-bugfix` for defects that need root cause and regression preservation.
 
@@ -40,6 +40,6 @@ Suggest candidate story boundaries for exactly one active epic; do not create or
 - [ ] Existing stories and bugfixes in the epic were checked for coverage and overlap.
 - [ ] Suggestions are independently implementable planned value slices, not technical task buckets.
 - [ ] Defect fixes are routed to `add-bugfix`.
-- [ ] Each suggestion maps to specific epic scope, PRD items when present, and acceptance criteria themes.
+- [ ] Each suggestion maps to specific epic scope, Product Vision items when present, and acceptance criteria themes.
 - [ ] Gaps, overlap, dependencies, sequencing, regression boundaries, and open questions are explicit.
 - [ ] No files were created or modified unless the user accepted a suggestion and requested creation.

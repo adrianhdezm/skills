@@ -1,6 +1,6 @@
 # Clarification Policy
 
-Ask only when the answer can change scope, design, verification strategy, sequencing, risk, ownership, or the artifact's meaning.
+Ask only when the answer can change product direction, audience, goals, success signals, constraints, non-goals, priority, ownership, or the artifact's meaning.
 
 Do not ask for information that can be discovered from repository context, existing planning artifacts, concern specs, documentation, or code.
 

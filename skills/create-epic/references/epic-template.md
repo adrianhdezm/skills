@@ -4,26 +4,26 @@
 
 - State: Active
 - Created: <YYYY-MM-DD>
-- Source PRD: `docs/prd/<feature>.md`
+- Source Product Vision: `docs/product-vision.md`
 - Owner: <name or team>
 
 ## Sources
 
-- `docs/prd/<feature>.md`
+- `docs/product-vision.md`
 - <Relevant concern specs, active epics, code paths, docs, designs, or operational references>
 
 ## Intent
 
 <Why this work exists and what outcome it must create.>
 
-## PRD Coverage Role
+## Product Vision Coverage Role
 
 - Owns:
-  - <PRD goal, story, constraint, or acceptance criterion owned by this epic>
+  - <Product Vision goal, success signal, principle, constraint, non-goal, assumption, or open question owned by this epic>
 - Partially Supports:
-  - <PRD item this epic supports but does not fully own, or none>
+  - <Product Vision item this epic supports but does not fully own, or none>
 - Does Not Cover:
-  - <Relevant PRD item intentionally left to another epic, deferred, or out of scope>
+  - <Relevant Product Vision item intentionally left to another epic, deferred, or out of scope>
 
 ## Scope
 
@@ -101,6 +101,6 @@
 
 - Decision: Pending
 - Evidence:
-  - <PRD item, concern spec, active epic, or review note>
+  - <Product Vision item, concern spec, active epic, or review note>
 - Gaps:
-  - <Missing PRD coverage, inconsistency, blocked question, or ADR need>
+  - <Missing Product Vision coverage, inconsistency, blocked question, or ADR need>

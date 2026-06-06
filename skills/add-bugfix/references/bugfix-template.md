@@ -4,7 +4,7 @@
 
 - State: Draft
 - Epic: `docs/epics/active/<epic>/epic.md`
-- PRD: `docs/prd/<feature>.md` or N/A
+- Product Vision: `docs/product-vision.md` or N/A
 - Created: <YYYY-MM-DD>
 - Updated: <YYYY-MM-DD>
 - Owner: <name or team>

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Create PRD"
-  short_description: "Capture intent as a PRD"
-  default_prompt: "Use $create-prd to clarify the request, inspect concern knowledge, and write a PRD under docs/prd for the validated planning flow."

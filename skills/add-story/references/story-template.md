@@ -4,7 +4,7 @@
 
 - State: Draft
 - Epic: `docs/epics/active/<epic>/epic.md`
-- PRD: `docs/prd/<feature>.md`
+- Product Vision: `docs/product-vision.md`
 - Created: <YYYY-MM-DD>
 - Updated: <YYYY-MM-DD>
 - Owner: <name or team>
@@ -12,7 +12,7 @@
 ## Sources
 
 - `docs/epics/active/<epic>/epic.md`
-- `docs/prd/<feature>.md`
+- `docs/product-vision.md`
 - <Relevant concern specs, code paths, docs, tests, designs, or operational references>
 
 ## Intent
@@ -61,7 +61,7 @@ Use EARS notation where possible.
 
 - Decision: Pending
 - Evidence:
-  - <Epic scope item, PRD criterion, concern spec, code path, or review note>
+  - <Epic scope item, Product Vision criterion, concern spec, code path, or review note>
 - Gaps:
   - <Missing coverage, inconsistent task, unclear verification, or blocked question>
 
@@ -72,7 +72,7 @@ Use EARS notation where possible.
 - [ ] Every acceptance criterion has matching verification evidence.
 - [ ] Every regression boundary has matching verification evidence.
 - [ ] Implemented behavior stays within story and epic scope.
-- [ ] No out-of-scope PRD, epic, story, or bugfix behavior was accidentally implemented.
+- [ ] No out-of-scope Product Vision, epic, story, or bugfix behavior was accidentally implemented.
 
 ## Validation Result
 
