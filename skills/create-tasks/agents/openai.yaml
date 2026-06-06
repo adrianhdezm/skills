@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Tasks"
+  short_description: "Break one epic into verified tasks"
+  default_prompt: "Use $create-tasks to read one validated active epic and its source PRD, then write docs/epics/active/<epic>/tasks.md with task and acceptance verification."

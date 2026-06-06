@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document Current System"
+  short_description: "Update concern knowledge"
+  default_prompt: "Use $document-current-system to read the codebase and update current concern knowledge under docs/knowledge."

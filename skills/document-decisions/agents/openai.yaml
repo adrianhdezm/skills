@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document Decisions"
+  short_description: "Create ADRs for important durable decisions"
+  default_prompt: "Use $document-decisions to write an ADR under docs/adrs for an important durable decision."

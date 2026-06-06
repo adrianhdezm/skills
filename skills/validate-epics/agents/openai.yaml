@@ -1,0 +1,4 @@
+interface:
+  display_name: "Validate Epics"
+  short_description: "Check PRD-to-epic coverage"
+  default_prompt: "Use $validate-epics to verify active epics cover the current PRD without inconsistencies or blocking open questions."

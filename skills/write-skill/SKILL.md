@@ -7,7 +7,7 @@ description: Create new agent skills with proper structure, progressive disclosu
 
 ## Core Rule
 
-Keep `SKILL.md` concrete: core workflow, trigger-specific guidance, and validation checklist only. If it approaches or exceeds 100 lines, move details into one-level support files and link to them from `SKILL.md`.
+Keep `SKILL.md` concrete: core workflow, trigger-specific guidance, and validation checklist only. Target under 100 lines; if it approaches or exceeds that size, move details into one-level support files and link to them from `SKILL.md`.
 
 Use progressive disclosure: keep essential instructions in `SKILL.md`, and load detailed references, scripts, or assets only when needed.
 
@@ -72,7 +72,7 @@ Do not add support files just to add structure. Avoid vague names such as `REFER
 ## Review Checklist
 
 - [ ] Description includes triggers with `Use when...`.
-- [ ] `SKILL.md` is under 100 lines.
+- [ ] `SKILL.md` targets under 100 lines, with detailed material moved into linked support files when needed.
 - [ ] No time-sensitive information.
 - [ ] Consistent terminology.
 - [ ] Concrete examples included when useful.
