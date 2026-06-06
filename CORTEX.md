@@ -45,6 +45,83 @@ create-prd
 validation result exposes an important durable decision that future maintainers
 must understand. It is not a mandatory step for every change.
 
+## Workflow Variants
+
+Cortex supports three planning entry points. Choose the variant that matches the
+starting material and risk level, while preserving the same durable artifact
+types and validation gates.
+
+### Requirements-First
+
+Use requirements-first when the work starts from desired behavior, product
+feedback, stakeholder notes, a problem statement, or a feature idea. This is the
+default Cortex flow:
+
+```text
+create-prd
+  -> create-epics
+  -> validate-epics
+  -> create-tasks
+  -> validate-tasks
+```
+
+The PRD captures product intent and EARS-style acceptance criteria. Epics then
+turn the accepted intent into implementation strategy, and tasks turn one
+validated epic into executable work.
+
+Example prompts:
+
+- "Use Cortex requirements-first to create a PRD for team invite links that
+  expire after seven days."
+- "Create a PRD for improving checkout retry behavior. Ask only for blocking
+  clarifications, inspect the repo, and include EARS acceptance criteria."
+- "Turn this stakeholder note into a Cortex PRD, then stop before creating
+  epics: <paste note>"
+
+### Design-Informed
+
+Use design-informed planning when the work starts from an existing technical
+design, architecture sketch, pseudocode, migration plan, integration proposal,
+or feasibility constraint. Start with `create-prd`, but treat the design as a
+source to derive product requirements, acceptance criteria, constraints,
+non-goals, and affected concerns before epic planning begins.
+
+The PRD must distinguish behavior the design requires from implementation
+details that belong in epics. If the design implies product behavior that is not
+approved, record it as an open question or assumption instead of silently
+turning it into scope.
+
+Example prompts:
+
+- "Use Cortex design-informed planning. Start from this architecture sketch,
+  derive the product requirements, and keep implementation details in the epic:
+  <paste design>"
+- "Create a PRD from this migration proposal. Separate required user-visible
+  behavior from suggested implementation details: <paste proposal>"
+- "I have a low-level design for rate limiting. Use it as input to create the
+  PRD first, then recommend the next Cortex step."
+
+### Quick Plan
+
+Use quick plan only for well-understood, low-risk work where the user explicitly
+wants to move quickly and the repository context is clear. Quick plan may run
+`create-prd`, `create-epics`, and `create-tasks` in one continuous planning pass,
+but it must still write all artifacts and leave validation sections accurate.
+
+Validation gates are not skipped. If quick plan creates epics or tasks before
+formal validation, their validation decisions remain `Pending` until
+`validate-epics` and `validate-tasks` are run, or until the user explicitly
+accepts the risk of proceeding with an unvalidated plan.
+
+Example prompts:
+
+- "Use Cortex quick plan for a small settings-page copy update. Create the PRD,
+  epic, and tasks in one pass, leaving validation pending."
+- "Quick-plan this straightforward API field rename. Inspect the repo first and
+  write all Cortex artifacts before implementation."
+- "Create a quick Cortex plan for adding a feature flag around the new banner.
+  Keep scope narrow and stop before coding."
+
 ## Process Stages
 
 ### 1. Define Product Intent
@@ -53,9 +130,10 @@ Use `create-prd` when work starts from an idea, business request, problem,
 stakeholder note, design, screenshot, or unstructured feature ask.
 
 The PRD defines why the work exists: problem, users, goals, success criteria,
-constraints, non-goals, affected concerns, assumptions, open questions,
-dependencies, risks, and references. It should mention likely surfaces only as
-product context. Final implementation details belong in epics and tasks.
+EARS-style acceptance criteria, constraints, non-goals, affected concerns,
+assumptions, open questions, dependencies, risks, and references. It should
+mention likely surfaces only as product context. Final implementation details
+belong in epics and tasks.
 
 Output: `docs/prd/<feature>.md`.
 

@@ -30,9 +30,39 @@
 
 - <Metric, observable behavior, or acceptance signal>
 
+## Acceptance Criteria
+
+Use EARS notation where possible. Each criterion should be observable,
+testable, and traceable to a goal, user story, constraint, or stakeholder need.
+
+- WHEN <condition or event>
+  THE SYSTEM SHALL <observable behavior>
+
 ## User Stories
 
 1. As an <actor>, I want a <feature>, so that <benefit>
+
+## Requirements Analysis
+
+### Consistency Check
+
+- <Logical inconsistency, contradiction, or "None identified">
+
+### Ambiguity Check
+
+- <Ambiguous term, unclear actor, missing condition, or "None identified">
+
+### Coverage Check
+
+- <Missing user path, failure path, edge case, constraint, or "None identified">
+
+### Testability Check
+
+- <Untestable success criterion, unclear threshold, missing evidence method, or "None identified">
+
+### Design Boundary Check
+
+- <Implementation detail that must stay out of PRD scope, hidden design commitment, or "None identified">
 
 ## Suspected Surfaces
 
