@@ -1,4 +1,4 @@
 interface:
   display_name: "Run Validation"
   short_description: "Validate code and quality gates"
-  default_prompt: "Use $run-validation to verify implemented code covers the written task plan and all relevant tests, linters, formatters, and quality gates pass."
+  default_prompt: "Use $run-validation to verify implemented code covers one story or bugfix and all relevant tests, linters, formatters, and quality gates pass."

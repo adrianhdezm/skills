@@ -2,8 +2,9 @@
 
 Cortex is a concern-centric development process for planned product and system
 changes. It turns product intent into PRDs, slices PRDs into validated epics,
-breaks epics into executable tasks, implements those tasks, records validation
-evidence, updates durable system knowledge, and archives completed epic history.
+adds independently validated stories and bugfixes inside those epics, implements
+one work item at a time, records validation evidence, updates durable system
+knowledge, and archives completed epic history.
 
 The skills are designed to be used in order. Each planning artifact becomes the
 source of truth for the next step, and each validation skill checks the written
@@ -17,7 +18,10 @@ planned or changed, not into the skills repository:
 - `docs/prd/` - product requirements documents created by `create-prd`.
 - `docs/epics/active/<epic>/epic.md` - active epic plans created by
   `create-epics`.
-- `docs/epics/active/<epic>/tasks.md` - task plans created by `create-tasks`.
+- `docs/epics/active/<epic>/stories/story_<name>.md` - planned value slices
+  added by `add-story`.
+- `docs/epics/active/<epic>/bugfixes/bugfix_<name>.md` - surgical defect fixes
+  added by `add-bugfix`.
 - `docs/epics/archived/<epic>/` - completed or closed epic history moved by
   `archive-epic`.
 - `docs/knowledge/<concern>/` - current system knowledge maintained by
@@ -33,23 +37,23 @@ Use this sequence for planned product or system changes:
 create-prd
   -> create-epics
   -> validate-epics
-  -> create-tasks
-  -> validate-tasks
-  -> implement-tasks
+  -> add-story or add-bugfix
+  -> validate-work-item
+  -> implement-work-item
   -> run-validation
   -> document-current-system
   -> archive-epic
 ```
 
-`document-decisions` is used when a PRD, epic, task plan, implementation, or
+`document-decisions` is used when a PRD, epic, story, bugfix, implementation, or
 validation result exposes an important durable decision that future maintainers
 must understand. It is not a mandatory step for every change.
 
 ## Workflow Variants
 
-Cortex supports three planning entry points. Choose the variant that matches the
-starting material and risk level, while preserving the same durable artifact
-types and validation gates.
+Cortex supports five planning entry points. Choose the variant that matches the
+starting material and risk level, while preserving durable artifact types and
+validation gates.
 
 ### Requirements-First
 
@@ -61,13 +65,13 @@ default Cortex flow:
 create-prd
   -> create-epics
   -> validate-epics
-  -> create-tasks
-  -> validate-tasks
+  -> add-story
+  -> validate-work-item
 ```
 
-The PRD captures product intent and EARS-style acceptance criteria. Epics then
-turn the accepted intent into implementation strategy, and tasks turn one
-validated epic into executable work.
+The PRD captures product intent and EARS-style acceptance criteria. Epics turn
+the accepted intent into durable delivery boundaries, and stories turn one
+validated epic into executable value slices.
 
 Example prompts:
 
@@ -87,9 +91,9 @@ source to derive product requirements, acceptance criteria, constraints,
 non-goals, and affected concerns before epic planning begins.
 
 The PRD must distinguish behavior the design requires from implementation
-details that belong in epics. If the design implies product behavior that is not
-approved, record it as an open question or assumption instead of silently
-turning it into scope.
+details that belong in epics and child work items. If the design implies product
+behavior that is not approved, record it as an open question or assumption
+instead of silently turning it into scope.
 
 Example prompts:
 
@@ -105,22 +109,57 @@ Example prompts:
 
 Use quick plan only for well-understood, low-risk work where the user explicitly
 wants to move quickly and the repository context is clear. Quick plan may run
-`create-prd`, `create-epics`, and `create-tasks` in one continuous planning pass,
+`create-prd`, `create-epics`, and `add-story` in one continuous planning pass,
 but it must still write all artifacts and leave validation sections accurate.
 
-Validation gates are not skipped. If quick plan creates epics or tasks before
-formal validation, their validation decisions remain `Pending` until
-`validate-epics` and `validate-tasks` are run, or until the user explicitly
+Validation gates are not skipped. If quick plan creates epics or work items
+before formal validation, their validation decisions remain `Pending` until
+`validate-epics` and `validate-work-item` are run, or until the user explicitly
 accepts the risk of proceeding with an unvalidated plan.
 
 Example prompts:
 
 - "Use Cortex quick plan for a small settings-page copy update. Create the PRD,
-  epic, and tasks in one pass, leaving validation pending."
+  epic, and story in one pass, leaving validation pending."
 - "Quick-plan this straightforward API field rename. Inspect the repo first and
   write all Cortex artifacts before implementation."
 - "Create a quick Cortex plan for adding a feature flag around the new banner.
   Keep scope narrow and stop before coding."
+
+### Bugfix
+
+Use bugfix planning when the work starts from defective behavior that should be
+corrected surgically inside an active epic. Bugfixes do not create child epics;
+the bugfix file owns current behavior, expected behavior, unchanged behavior,
+root cause, fix boundary, implementation tasks, and regression verification.
+
+```text
+add-bugfix
+  -> validate-work-item
+  -> implement-work-item
+  -> run-validation
+```
+
+Bugfix work should include a failing reproduction test or deterministic repro
+evidence before the fix whenever practical. If the bugfix changes the epic's
+outcome, public contract, rollout, or material risk profile, update the epic and
+re-run `validate-epics` before implementation.
+
+Example prompts:
+
+- "Use Cortex to add a bugfix for the invite expiry timezone issue under the
+  account-invites epic."
+- "Add a Cortex bugfix for this failing test, include unchanged behavior, and
+  stop before implementation."
+- "This active epic has a regression in checkout retry. Add a bugfix work item
+  with root cause analysis and regression checks."
+
+### Epic Extension
+
+Use epic extension when an active epic needs more work after its initial stories
+or bugfixes were created. Add a new `story_*.md` or `bugfix_*.md` instead of
+rewriting existing child work. If the new work is outside the current epic
+scope, update the epic and re-run `validate-epics` first.
 
 ## Process Stages
 
@@ -133,7 +172,7 @@ The PRD defines why the work exists: problem, users, goals, success criteria,
 EARS-style acceptance criteria, constraints, non-goals, affected concerns,
 assumptions, open questions, dependencies, risks, and references. It should
 mention likely surfaces only as product context. Final implementation details
-belong in epics and tasks.
+belong in epics, stories, and bugfixes.
 
 Output: `docs/prd/<feature>.md`.
 
@@ -144,71 +183,79 @@ Use `create-epics` after the PRD is ready for planning.
 Each epic owns one independently buildable delivery outcome. The epic records
 scope, current system context, concern impact, dependencies, cross-epic
 relationships, risks, rollout, implementation strategy, assumptions, open
-questions, and ADR candidates. This skill does not create task files.
+questions, and ADR candidates. The epic is a durable container; child stories
+and bugfixes can be added over time.
 
 Output: `docs/epics/active/<epic>/epic.md`.
 
 ### 3. Validate Epics
 
-Use `validate-epics` before creating tasks.
+Use `validate-epics` before adding child stories or bugfixes.
 
 Validation checks that active epics preserve the PRD intent, cover every current
 goal and acceptance criterion, avoid unapproved scope, stay consistent with
-concern knowledge, and have no blocking open questions. Passing epics can move
-to task planning. Failed, partial, or blocked epics should be corrected before
-tasks are created.
+concern knowledge, and have no blocking open questions. Passing epics can accept
+stories and bugfixes. Failed, partial, or blocked epics should be corrected
+before child work items are created.
 
 Output: updated `Epic Validation` sections in the relevant `epic.md` files.
 
-### 4. Create Task Plans
+### 4. Add Stories Or Bugfixes
 
-Use `create-tasks` for exactly one validated epic at a time.
+Use `add-story` or `add-bugfix` for exactly one work item inside a validated
+active epic.
 
-The task plan breaks the epic into ordered, reviewable implementation units.
-Every task includes purpose, scope, dependencies, verification steps, and pass
-criteria. The task file also includes acceptance verification rows that map PRD
-goals or acceptance criteria to epic outcomes, tasks, and verification methods.
+A story is a planned value slice inside the epic. A bugfix is corrective work
+inside the epic. Each work item includes purpose, scope, non-scope,
+implementation tasks, dependencies, verification steps, pass criteria, and
+validation sections. Work items can be added later to extend an active epic
+without rewriting existing child work.
 
-Output: `docs/epics/active/<epic>/tasks.md`.
+Outputs:
 
-### 5. Validate Tasks
+- `docs/epics/active/<epic>/stories/story_<name>.md`
+- `docs/epics/active/<epic>/bugfixes/bugfix_<name>.md`
 
-Use `validate-tasks` before implementation starts.
+### 5. Validate Work Items
 
-Validation checks that tasks cover the epic, preserve task sequencing and
-dependencies, include executable verification, and do not contradict the PRD or
-epic. Passing task plans can feed `implement-tasks`.
+Use `validate-work-item` before implementation starts.
 
-Output: updated `Task Plan Validation` section in `tasks.md`.
+Validation checks that one story or bugfix fits the epic, preserves scope,
+includes executable verification, and does not contradict the PRD, epic, concern
+knowledge, or sibling work items. Passing work items can feed
+`implement-work-item`.
 
-### 6. Implement The Plan
+Output: updated `Work Item Validation` section in the selected story or bugfix.
 
-Use `implement-tasks` after `validate-tasks` passes and the user wants the work
-built. If the user explicitly asks to implement an unvalidated or partially
-validated task plan, record the override and risk before coding.
+### 6. Implement One Work Item
 
-Implementation follows the `epic.md` and `tasks.md`. It should keep
-scope tight, follow repository conventions, update task checkboxes only when
-implementation work is complete and task-level verification has passed, and
-stop for approval before materially changing the plan. Important durable design
-decisions discovered during implementation should be captured with
-`document-decisions` when they meet ADR criteria.
+Use `implement-work-item` after `validate-work-item` passes and the user wants
+the work built. If the user explicitly asks to implement an unvalidated or
+partially validated work item, record the override and risk before coding.
+
+Implementation follows the `epic.md` and exactly one `story_*.md` or
+`bugfix_*.md`. It should keep scope tight, follow repository conventions, update
+implementation task checkboxes only when work is complete and task-level
+verification has passed, and stop for approval before materially changing the
+plan. Important durable design decisions discovered during implementation
+should be captured with `document-decisions` when they meet ADR criteria.
 
 Output: scoped code, test, migration, documentation, or configuration changes,
-plus updated task status where appropriate.
+plus updated work item status where appropriate.
 
 ### 7. Run Validation
 
 Use `run-validation` after implementation is complete or ready for objective
 checking.
 
-Validation checks implemented work against the written PRD, epic, task plan,
-task verification steps, acceptance verification rows, and repository quality
-gates. It records pass, fail, partial, blocked, skipped checks, command output,
-evidence, and gaps in `tasks.md`.
+Validation checks implemented work against the written PRD when present, epic,
+selected story or bugfix, implementation task verification steps, verification
+matrix rows, and repository quality gates. It records pass, fail, partial,
+blocked, skipped checks, command output, evidence, and gaps in the selected work
+item file.
 
-Output: updated `Final Validation`, `Acceptance Verification`, and
-`Validation Result` sections in `tasks.md`.
+Output: updated `Final Validation`, `Verification Matrix`, and
+`Validation Result` sections in the selected story or bugfix.
 
 ### 8. Update Current System Knowledge
 
@@ -238,9 +285,11 @@ Output: archived epic folder and archive summary.
 
 The process has three explicit gates:
 
-- `validate-epics` decides whether epic plans can feed task planning.
-- `validate-tasks` decides whether task plans can feed implementation.
-- `run-validation` decides whether implemented work satisfies the task plan.
+- `validate-epics` decides whether epic plans can accept stories and bugfixes.
+- `validate-work-item` decides whether one story or bugfix can feed
+  implementation.
+- `run-validation` decides whether implemented work satisfies the selected work
+  item.
 
 Validation decisions use these result values:
 

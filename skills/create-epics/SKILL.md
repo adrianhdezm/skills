@@ -7,7 +7,7 @@ description: Slice a PRD and current system state into one or more executable ep
 
 ## Core Rule
 
-Slice product intent into the smallest set of independently buildable epics. The required flow is `create-prd -> create-epics -> validate-epics -> create-tasks per epic`; `create-epics` must not create task files. Each `docs/epics/active/<epic>/epic.md` owns one delivery outcome: summary, scope, dependencies, risks, concern impact, implementation strategy, rollout, assumptions, and open questions. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Slice product intent into the smallest set of independently buildable epics. The required flow is `create-prd -> create-epics -> validate-epics -> add-story or add-bugfix`; `create-epics` must not create child work item files. Each `docs/epics/active/<epic>/epic.md` owns one delivery outcome and can later contain independently validated stories and bugfixes. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -27,7 +27,7 @@ Slice product intent into the smallest set of independently buildable epics. The
    - Ensure one `docs/epics/active/<epic>/` folder exists for each epic.
    - Write `docs/epics/active/<epic>/epic.md` using [references/epic-template.md](references/epic-template.md).
    - Include implementation strategy, concern impact, rollout/backout, ADR candidates, and cross-epic relationships in each epic.
-   - Do not write `tasks.md`; task sequencing and verification tracking are created by `create-tasks` for each epic.
+   - Do not write story or bugfix files; child work item sequencing and verification tracking are created by `add-story` and `add-bugfix`.
 
 4. Report result:
    - Provide the absolute path for every epic created.
@@ -40,5 +40,5 @@ Slice product intent into the smallest set of independently buildable epics. The
 - [ ] The PRD is sliced into one or more independently buildable epics.
 - [ ] Each epic has concrete scope, non-scope, dependencies, risks, rollout, and concern impact.
 - [ ] Cross-epic dependencies and sequencing are explicit.
-- [ ] No `tasks.md` files were created by this skill.
+- [ ] No story or bugfix files were created by this skill.
 - [ ] Each epic is concrete enough to feed `validate-epics`.

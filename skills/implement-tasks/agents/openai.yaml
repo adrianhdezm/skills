@@ -1,4 +1,0 @@
-interface:
-  display_name: "Implement Tasks"
-  short_description: "Build planned tasks"
-  default_prompt: "Use $implement-tasks to read validated tasks and system design, then implement the planned code changes."

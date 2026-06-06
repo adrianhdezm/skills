@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add Story"
+  short_description: "Add a scoped story to an epic"
+  default_prompt: "Use $add-story to add one in-scope story under docs/epics/active/<epic>/stories with acceptance criteria, implementation tasks, and verification."

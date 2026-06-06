@@ -12,8 +12,8 @@ Archive only when the epic has a clear final state. Archive preserves traceabili
 ## Workflow
 
 1. Review readiness:
-   - Read the active epic, tasks and validation result, concern spec updates, and related ADRs.
-   - Confirm all required tasks are done, intentionally deferred, or explicitly cancelled.
+   - Read the active epic, child stories, child bugfixes, validation results, concern spec updates, and related ADRs.
+   - Confirm all required stories and bugfixes are done, intentionally deferred, or explicitly cancelled.
    - Confirm system state has been updated when implementation changed durable behavior.
 
 2. Finalize history:

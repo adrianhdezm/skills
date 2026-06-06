@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implement Work Item"
+  short_description: "Build one story or bugfix"
+  default_prompt: "Use $implement-work-item to read one validated story or bugfix and implement its scoped code, tests, docs, config, or migration changes."

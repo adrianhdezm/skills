@@ -1,7 +1,7 @@
 {
   "name": "cortex",
   "version": "0.1.0",
-  "description": "Concern-centric planning, implementation, validation, and system documentation skills for Codex.",
+  "description": "Concern-centric planning, story, bugfix, implementation, validation, and system documentation skills for Codex.",
   "author": {
     "name": "Adrian Hernandez Mendez"
   },
@@ -16,13 +16,14 @@
   "interface": {
     "displayName": "Cortex",
     "shortDescription": "Run concern-centric product and system change workflows.",
-    "longDescription": "Cortex packages a full Codex delivery process: create PRDs from product intent, slice them into executable epics, validate epic and task coverage, implement scoped tasks, run objective validation, document current system knowledge, capture durable decisions as ADRs, and archive completed epic history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
+    "longDescription": "Cortex packages a full Codex delivery process: create PRDs from product intent, slice them into executable epics, add scoped stories and surgical bugfixes inside active epics, validate one work item at a time, implement scoped changes, run objective validation, document current system knowledge, capture durable decisions as ADRs, and archive completed epic history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
     "developerName": "Adrian Hernandez Mendez",
     "category": "Developer Tools",
     "capabilities": [
       "PRD Planning",
       "Epic Planning",
-      "Task Planning",
+      "Story Planning",
+      "Bugfix Planning",
       "Implementation",
       "Validation",
       "System Documentation",
@@ -31,7 +32,8 @@
     ],
     "defaultPrompt": [
       "Use Cortex to turn this request into a PRD.",
-      "Use Cortex to validate and implement this active epic.",
+      "Use Cortex to add, validate, and implement a story in this active epic.",
+      "Use Cortex to add a surgical bugfix with regression checks.",
       "Use Cortex to document current system knowledge."
     ]
   }

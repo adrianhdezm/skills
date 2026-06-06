@@ -9,7 +9,8 @@
 ## Sources
 
 - `docs/epics/active/<epic>/epic.md`
-- `docs/epics/active/<epic>/tasks.md`
+- `docs/epics/active/<epic>/stories/story_<name>.md`
+- `docs/epics/active/<epic>/bugfixes/bugfix_<name>.md`
 - <Updated concern specs, ADRs, validation reports, or implementation references>
 
 ## Outcome
@@ -18,7 +19,7 @@
 
 ## Completed Work
 
-- <Task, implementation, migration, documentation, or operational work>
+- <Story, bugfix, implementation, migration, documentation, or operational work>
 
 ## Validation Evidence
 

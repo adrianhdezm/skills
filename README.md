@@ -21,9 +21,10 @@ the supporting process documentation.
 
 - Cortex - a concern-centric development process for planned product and system
   changes. Cortex turns product intent into PRDs, slices PRDs into validated
-  epics, breaks epics into executable tasks, implements those tasks, records
-  validation evidence, updates durable system knowledge, and archives completed
-  epic history. Read [CORTEX.md](CORTEX.md) for the full process.
+  epics, adds independently validated stories and bugfixes inside those epics,
+  implements one work item at a time, records validation evidence, updates
+  durable system knowledge, and archives completed epic history. Read
+  [CORTEX.md](CORTEX.md) for the full process.
 
 ## Install From GitHub
 
@@ -42,10 +43,11 @@ by ADH marketplace.
 - `create-prd` - define product intent.
 - `create-epics` - slice a PRD into executable epic plans.
 - `validate-epics` - validate epics against the PRD.
-- `create-tasks` - break one validated epic into implementation tasks.
-- `validate-tasks` - validate task coverage and verification.
-- `implement-tasks` - implement task plans after `validate-tasks` passes, or after an explicit user override.
-- `run-validation` - validate implementation against the written task plan and quality gates.
+- `add-story` - add one planned value slice to an active epic.
+- `add-bugfix` - add one surgical bugfix to an active epic.
+- `validate-work-item` - validate one story or bugfix before implementation.
+- `implement-work-item` - implement one validated story or bugfix.
+- `run-validation` - validate implementation against the written work item and quality gates.
 - `document-current-system` - update living concern knowledge.
 - `document-decisions` - capture important durable decisions as ADRs.
 - `archive-epic` - preserve completed or closed epic history.

@@ -28,11 +28,11 @@ Do not write ADRs for:
 ## Workflow
 
 1. Identify decision:
-   - Read the available phase evidence: PRD, `docs/epics/active/<epic>/epic.md`, `docs/epics/active/<epic>/tasks.md`, validation results, relevant concern specs, and implementation evidence when those artifacts already exist.
+   - Read the available phase evidence: PRD, `docs/epics/active/<epic>/epic.md`, story or bugfix files, validation results, relevant concern specs, and implementation evidence when those artifacts already exist.
    - Confirm the decision is important and durable because it affects architecture, data, security, operations, infrastructure, platform contracts, long-term product behavior, or another high-consequence concern.
    - Confirm the decision matches at least one "Write ADRs for" category and none of the "Do not write ADRs for" exclusions.
    - Skip ADR creation when the decision is routine, easily reversible, purely local to one implementation detail, dictated by existing requirements, has only one viable option, or is already obvious from code and current-system docs.
-   - If the decision is only a candidate and durable rationale is not yet available, record it in the owning PRD, epic, or task artifact instead of forcing an ADR.
+   - If the decision is only a candidate and durable rationale is not yet available, record it in the owning PRD, epic, story, or bugfix artifact instead of forcing an ADR.
 
 2. Capture rationale:
    - State context, options, decision, consequences, tradeoffs, and follow-up work.

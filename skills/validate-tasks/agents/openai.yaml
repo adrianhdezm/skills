@@ -1,4 +1,0 @@
-interface:
-  display_name: "Validate Tasks"
-  short_description: "Check epic-to-task coverage"
-  default_prompt: "Use $validate-tasks to verify tasks cover their epic without inconsistencies or blocking open questions."
