@@ -1,5 +1,5 @@
 {
-  "name": "cortex",
+  "name": "built-by-adh",
   "version": "0.1.0",
   "description": "Concern-centric planning, implementation, validation, and system documentation skills for Codex.",
   "author": {
@@ -14,7 +14,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Cortex",
+    "displayName": "Built by ADH",
     "shortDescription": "Run concern-centric product and system change workflows.",
     "longDescription": "Cortex packages a full Codex delivery process: create PRDs from product intent, slice them into executable epics, validate epic and task coverage, implement scoped tasks, run objective validation, document current system knowledge, capture durable decisions as ADRs, and archive completed epic history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
     "developerName": "Adrian Hernandez Mendez",
@@ -30,9 +30,9 @@
       "Skill Authoring"
     ],
     "defaultPrompt": [
-      "Use Cortex to turn this request into a PRD.",
-      "Use Cortex to validate and implement this active epic.",
-      "Use Cortex to document current system knowledge."
+      "Use Built by ADH to turn this request into a PRD.",
+      "Use Built by ADH to validate and implement this epic.",
+      "Use Built by ADH to document current system knowledge."
     ]
   }
 }

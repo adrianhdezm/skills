@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "cortex",
+      "name": "built-by-adh",
       "source": {
         "source": "url",
         "url": "https://github.com/adrianhdezm/skills.git",

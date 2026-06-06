@@ -19,7 +19,7 @@ the supporting process documentation.
 
 ## Existing Plugins
 
-- Cortex - a concern-centric development process for planned product and system
+- Built by ADH - a concern-centric development process for planned product and system
   changes. Cortex turns product intent into PRDs, slices PRDs into validated
   epics, breaks epics into executable tasks, implements those tasks, records
   validation evidence, updates durable system knowledge, and archives completed
@@ -27,14 +27,14 @@ the supporting process documentation.
 
 ## Install From GitHub
 
-Cortex is distributed through the repo marketplace at
+Built by ADH is distributed through the repo marketplace at
 `.agents/plugins/marketplace.json`.
 
 ```bash
 codex plugin marketplace add adrianhdezm/skills --ref main
 ```
 
-After adding the marketplace, restart Codex and install Cortex from the ADH
+After adding the marketplace, restart Codex and install Built by ADH from the ADH
 Tools marketplace.
 
 ## Skills
