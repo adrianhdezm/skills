@@ -16,6 +16,15 @@
 
 <Why this work exists and what outcome it must create.>
 
+## PRD Coverage Role
+
+- Owns:
+  - <PRD goal, story, constraint, or acceptance criterion owned by this epic>
+- Partially Supports:
+  - <PRD item this epic supports but does not fully own, or none>
+- Does Not Cover:
+  - <Relevant PRD item intentionally left to another epic, deferred, or out of scope>
+
 ## Scope
 
 ### In Scope

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Epic"
+  short_description: "Create one active epic"
+  default_prompt: "Use $create-epic to read a PRD and create exactly one active epic for the specific outcome I provide, then recommend $validate-epic."

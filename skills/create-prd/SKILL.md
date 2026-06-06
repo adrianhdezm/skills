@@ -7,7 +7,7 @@ description: Define why work exists by turning ideas, problems, or business requ
 
 ## Core Rule
 
-Ground every PRD in product intent, local repository context, and concern knowledge. The required flow is `create-prd -> create-epics -> validate-epics -> add-story or add-bugfix -> validate-work-item`; do not skip the epic slicing step or validation gates. Features drive change; the PRD defines why the feature should exist, not the final implementation or verification strategy. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Ground every PRD in product intent, local repository context, and concern knowledge. The required flow is `create-prd -> create-epic -> validate-epic -> add-story or add-bugfix -> validate-work-item`; use `suggest-epics` first when the user needs brainstorming, PRD decomposition, or gap discovery. Features drive change; the PRD defines why the feature should exist, not the final implementation or verification strategy. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -34,7 +34,7 @@ Ground every PRD in product intent, local repository context, and concern knowle
    - Check the bounded PRD content for logical inconsistencies, ambiguous terms, conflicting constraints, missing actors, missing failure paths, untestable success criteria, and hidden design commitments.
    - Check every acceptance criterion is observable, testable, and traceable to a goal, user story, constraint, or explicit stakeholder need.
    - For design-informed inputs, separate required product behavior from suggested implementation details and record unapproved behavior as an assumption or open question.
-   - Resolve blocking gaps before recommending `create-epics`; record non-blocking gaps as assumptions, risks, or open questions in the PRD.
+   - Resolve blocking gaps before recommending `create-epic` or `suggest-epics`; record non-blocking gaps as assumptions, risks, or open questions in the PRD.
 
 5. Write the PRD:
    - Ensure `docs/prd/` exists.
@@ -45,7 +45,7 @@ Ground every PRD in product intent, local repository context, and concern knowle
 
 6. Report result:
    - Provide the absolute PRD path.
-   - Summarize requirements analysis findings, blocking questions, recorded assumptions, and recommend `create-epics` when no blocking gaps remain.
+   - Summarize requirements analysis findings, blocking questions, recorded assumptions, and recommend `create-epic` when the user already knows the target outcome, or `suggest-epics` when epic options need to be discovered.
 
 ## Validation Checklist
 
@@ -56,4 +56,4 @@ Ground every PRD in product intent, local repository context, and concern knowle
 - [ ] Contradictions or ambiguous decisions were resolved with the user.
 - [ ] Suspected pages or non-UI surfaces are product context, not final design.
 - [ ] Affected concerns, assumptions, and open questions are explicit.
-- [ ] The PRD can feed `create-epics` without rediscovering core behavior.
+- [ ] The PRD can feed `create-epic` or `suggest-epics` without rediscovering core behavior.

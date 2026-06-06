@@ -18,7 +18,7 @@ Add exactly one bugfix to an existing active epic. A bugfix is the implementatio
 
 2. Analyze the defect:
    - Capture current defective behavior, expected behavior, unchanged behavior, reproduction evidence, suspected root cause, affected surfaces, and fix constraints.
-   - If the fix changes the epic outcome, public contract, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epics`.
+   - If the fix changes the epic outcome, public contract, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
    - Prefer a failing reproduction test or deterministic repro command. If impossible, record why and use the closest reliable evidence.
 
 3. Write the bugfix:

@@ -20,10 +20,11 @@ the supporting process documentation.
 ## Existing Plugins
 
 - Cortex - a concern-centric development process for planned product and system
-  changes. Cortex turns product intent into PRDs, slices PRDs into validated
-  epics, adds independently validated stories and bugfixes inside those epics,
-  implements one work item at a time, records validation evidence, updates
-  durable system knowledge, and archives completed epic history. Read
+  changes. Cortex turns product intent into PRDs, suggests epic options when
+  needed, creates validated epics one at a time, adds independently validated
+  stories and bugfixes inside those epics, implements one work item at a time,
+  records validation evidence, updates durable system knowledge, and archives
+  completed epic history. Read
   [CORTEX.md](CORTEX.md) for the full process.
 
 ## Install From GitHub
@@ -41,8 +42,9 @@ by ADH marketplace.
 ## Skills
 
 - `create-prd` - define product intent.
-- `create-epics` - slice a PRD into executable epic plans.
-- `validate-epics` - validate epics against the PRD.
+- `suggest-epics` - suggest candidate epics from a PRD plus active and archived epics.
+- `create-epic` - create one executable active epic plan.
+- `validate-epic` - validate one active epic against the PRD.
 - `add-story` - add one planned value slice to an active epic.
 - `add-bugfix` - add one surgical bugfix to an active epic.
 - `validate-work-item` - validate one story or bugfix before implementation.

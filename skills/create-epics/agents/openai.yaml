@@ -1,4 +1,0 @@
-interface:
-  display_name: "Create Epics"
-  short_description: "Slice a PRD into active epics"
-  default_prompt: "Use $create-epics to read a PRD and create one or more active epic containers under docs/epics/active, then recommend validate-epics."

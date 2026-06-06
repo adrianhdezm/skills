@@ -18,7 +18,7 @@ Add exactly one story to an existing active epic. A story is the implementation 
 
 2. Confirm fit:
    - Verify the requested story is within the epic scope.
-   - If it changes the epic outcome, success criteria, implementation strategy, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epics`.
+   - If it changes the epic outcome, success criteria, implementation strategy, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
    - If it is a defect fix, use `add-bugfix`.
 
 3. Write the story:
