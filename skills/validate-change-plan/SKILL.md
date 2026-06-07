@@ -12,6 +12,7 @@ Validate the written story or bugfix plan, not memory. Confirm exactly one chang
 ## Workflow
 
 1. Load validation context:
+   - When the user has not provided a specific artifact path, run this skill's `scripts/list-unvalidated-plans.sh <target-repo-root>` to find `Ready` or `Blocked` stories and bugfixes whose `Change Plan Validation` decision is missing or not `Pass`; use that filtered list to choose or ask for the single plan to validate.
    - Read one epic-scoped story or bugfix under `docs/epics/active/<epic>/story_*.md` or `docs/epics/active/<epic>/bugfix_*.md`, or one standalone story or bugfix under `docs/standalone-changes/active/story_*.md` or `docs/standalone-changes/active/bugfix_*.md`.
    - For epic-scoped work, read `docs/epics/active/<epic>/epic.md` and its source Product Vision when present.
    - For standalone work, read `docs/vision.md` when present, active epics under `docs/epics/active/`, and sibling standalone changes under `docs/standalone-changes/active/`.

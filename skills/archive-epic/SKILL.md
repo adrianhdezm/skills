@@ -12,6 +12,7 @@ Archive only when the epic has a clear final state. Archive preserves traceabili
 ## Workflow
 
 1. Review readiness:
+   - Run this skill's `scripts/summarize-epic-states.sh <epic-slug-or-path> <target-repo-root>` to list the active epic's validation decision and child story or bugfix states before reading full artifacts.
    - Read the active epic, child stories, child bugfixes, validation results, concern spec updates, and related ADRs.
    - Confirm all required stories and bugfixes are done, intentionally deferred, or explicitly cancelled.
    - Confirm system state has been updated when implementation changed durable behavior.

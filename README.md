@@ -14,6 +14,8 @@ the supporting process documentation.
   for each skill.
 - `skills/<skill>/references/` - templates, clarification policies, and support
   documentation loaded only when needed.
+- `skills/<skill>/scripts/` - skill-local helper scripts for deterministic
+  artifact discovery and filtered workflow context.
 - `skills/<skill>/agents/openai.yaml` - optional UI metadata for showing skills
   in Codex.
 - `scripts/` - repository maintenance checks, including Cortex consistency
@@ -55,7 +57,7 @@ by ADH marketplace.
 - `add-bugfix` - add one surgical bugfix to an active epic or standalone changes.
 - `validate-change-plan` - validate one story or bugfix plan before implementation.
 - `implement-change` - implement one ready or partially implemented story or bugfix.
-- `validate-implementation` - validate review-state work against the plan and quality gates.
+- `validate-implementation` - validate one review-state story or bugfix against its plan and quality gates.
 - `document-current-system` - update living concern knowledge.
 - `document-decisions` - capture important durable decisions as ADRs.
 - `archive-epic` - preserve completed or closed epic history.

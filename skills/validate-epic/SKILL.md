@@ -13,6 +13,7 @@ Validate one epic plan against the written Product Vision, not memory. Confirm t
 
 1. Load validation context:
    - Read the source `docs/vision.md`.
+   - When the user has not provided a specific epic path, run this skill's `scripts/list-active-epics.sh <target-repo-root>` to list active epics and their current validation decisions before choosing or asking for exactly one target epic.
    - Read exactly one target `docs/epics/active/<epic>/epic.md` file.
    - Read relevant `docs/knowledge/<concern>/` specs and existing active epics only when they affect this epic's scope, sequencing, ownership, overlap, or risk.
 

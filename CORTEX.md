@@ -70,8 +70,9 @@ Notes:
 - `suggest-epics` should be used to discover candidate delivery boundaries
   before selecting the first epic.
 - `suggest-stories` can be used after an epic passes validation, and again any
-  time while the epic is active, to read existing stories and bugfixes and
-  suggest remaining story coverage for the epic goals.
+  time while the epic is active. It first selects exactly one active epic, then
+  reads that epic's existing stories and bugfixes to suggest remaining story
+  coverage for the epic goals.
 - `archive-epic` is used only after implementation, validation, and
   current-system documentation are complete, or when the epic is intentionally
   closed.
@@ -130,9 +131,9 @@ could satisfy the request, or when the feature may overlap archived or active
 work. Skip it when the user has already selected a specific epic outcome.
 
 Use `suggest-stories` after `validate-epic` when the remaining story coverage is
-unclear, when existing child work needs coverage review, or when the user wants
-candidate value slices before creating story files. Skip it when the next story
-or bugfix is already specific.
+unclear for one selected active epic, when that epic's existing child work needs
+coverage review, or when the user wants candidate value slices before creating
+story files. Skip it when the next story or bugfix is already specific.
 
 ### 4. Implement An Existing Cortex Story Or Bugfix
 
@@ -151,6 +152,8 @@ Implementation follows exactly one `story_*.md` or `bugfix_*.md`, plus
 `epic.md` for epic-scoped work. If implementation discovers that the plan is
 wrong, incomplete, or materially risky, update the plan and re-run validation
 before continuing unless the user explicitly accepts the risk of proceeding.
+Validation also follows exactly one implemented `story_*.md` or `bugfix_*.md`
+in `State: Review`.
 
 ### 5. Plan And Execute A Small Change
 
@@ -204,9 +207,9 @@ work. If the new work changes the epic outcome, public contract, rollout,
 dependencies, or material risk profile, update `epic.md` and re-run
 `validate-epic` before adding the child artifact.
 
-Use `suggest-stories` when the missing work is not yet clearly bounded or when
-the epic needs coverage review against existing stories and bugfixes. Skip it
-when the next story or bugfix is already specific.
+Use `suggest-stories` when the missing work is not yet clearly bounded for one
+selected active epic, or when that epic needs coverage review against existing
+stories and bugfixes. Skip it when the next story or bugfix is already specific.
 
 ## Skill Reference
 
@@ -247,8 +250,9 @@ child artifacts are created.
 Use `suggest-stories` after `validate-epic`, and any time while the epic remains
 active, when the user wants to plan the story set needed to fulfill one active
 epic, find missing child-work coverage against existing stories and bugfixes, or
-choose the next independently implementable value slice. It suggests story
-boundaries; it does not write story files.
+choose the next independently implementable value slice. It first selects
+exactly one active epic, loads context from that selected epic, then suggests
+story boundaries; it does not write story files.
 
 Use `add-story` or `add-bugfix` for exactly one story or bugfix inside a
 validated active epic or under `docs/standalone-changes/active/`.
@@ -268,9 +272,9 @@ Use `implement-change` when one story or bugfix is in `State: Ready` or
 `State: Partial Implemented` and the user wants the work built.
 
 Use `validate-implementation` after implementation moves stories or bugfixes to
-`State: Review`. It validates all review-state stories and bugfixes, then
+`State: Review`. It first selects exactly one review-state story or bugfix, then
 records pass, fail, partial, blocked, skipped checks, command output, evidence,
-remaining gaps, and the next workflow state in each reviewed artifact.
+remaining gaps, and the next workflow state in the selected artifact.
 
 ### Knowledge And History
 
@@ -335,8 +339,8 @@ The process has three explicit gates:
   bugfixes.
 - `validate-change-plan` decides whether one story or bugfix plan can feed
   implementation.
-- `validate-implementation` decides whether review-state implemented work
-  satisfies each story or bugfix plan.
+- `validate-implementation` decides whether one review-state implementation
+  satisfies its selected story or bugfix plan.
 
 Validation decisions use these result values:
 
@@ -362,7 +366,7 @@ Gate transitions:
     implemented.
   - When implementation is ready for objective validation, set `State: Review`.
 - `validate-implementation`:
-  - Validate all stories and bugfixes with `State: Review`.
+  - Validate exactly one story or bugfix with `State: Review`.
   - `Pass` sets `State: Implemented` and allows `document-current-system` and epic
     completion checks.
   - `Partial` sets `State: Partial Implemented`; it allows
