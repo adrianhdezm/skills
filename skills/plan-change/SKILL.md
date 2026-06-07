@@ -25,7 +25,7 @@ Route exactly one concrete change request to the correct Cortex planning path be
 3. Decide placement:
    - Route to an active epic when the request directly advances that epic's outcome, scope, acceptance strategy, rollout, or defect correction.
    - Route to `docs/standalone-changes/active/` when the request is small or independent, does not fit a current active epic, does not require multiple coordinated stories or bugfixes, and does not materially change Product Vision direction.
-   - Route to `create-epic` when the request needs multiple coordinated work items, a rollout or backout plan, cross-cutting ownership, material risk tracking, sequencing across areas, or a new end-to-end delivery outcome.
+   - Route to `create-epic` when the request needs multiple coordinated stories or bugfixes, a rollout or backout plan, cross-cutting ownership, material risk tracking, sequencing across areas, or a new end-to-end delivery outcome.
    - If the request changes durable product direction, audience, goals, success signals, principles, constraints, or non-goals before planning can be safe, stop routing and recommend `define-product-vision`.
 
 4. Produce the routing decision:

@@ -23,7 +23,7 @@ the supporting process documentation.
   changes. Cortex turns product intent into a single Product Vision, suggests
   epic and story options when needed, plans incoming changes, creates validated
   epics one at a time, adds independently validated stories and bugfixes inside
-  those epics or as standalone changes, implements one work item at a time,
+  those epics or as standalone changes, implements one story or bugfix at a time,
   records validation evidence, updates durable system knowledge, and archives
   completed history. Read
   [CORTEX.md](CORTEX.md) for the full process.
@@ -50,8 +50,8 @@ by ADH marketplace.
 - `suggest-stories` - suggest candidate stories for one active epic.
 - `add-story` - add one planned value slice to an active epic or standalone changes.
 - `add-bugfix` - add one surgical bugfix to an active epic or standalone changes.
-- `validate-work-plan` - validate one story or bugfix plan before implementation.
-- `implement-work-item` - implement one validated story or bugfix.
+- `validate-change-plan` - validate one story or bugfix plan before implementation.
+- `implement-change` - implement one validated story or bugfix.
 - `validate-implementation` - validate implemented work against the plan and quality gates.
 - `document-current-system` - update living concern knowledge.
 - `document-decisions` - capture important durable decisions as ADRs.

@@ -21,7 +21,7 @@ Validate one epic plan against the written Product Vision, not memory. Confirm t
    - Check that the epic covers one end-to-end delivery outcome rather than a technical layer, component-only task bucket, or low-level implementation plan.
    - Check that the epic is broad enough to deliver usable value but narrow enough for child stories and bugfixes to be planned independently.
    - Check that dependencies, sibling-epic relationships, overlap, and sequencing are explicit where they affect this epic.
-   - For each important durable decision with enough rationale, use `document-decisions` before child work item planning proceeds. If the decision is only a candidate, record it as an ADR candidate or validation gap instead of forcing an ADR.
+   - For each important durable decision with enough rationale, use `document-decisions` before child story or bugfix planning proceeds. If the decision is only a candidate, record it as an ADR candidate or validation gap instead of forcing an ADR.
 
 3. Validate Product Vision coverage:
    - Check that owned, partially supported, and intentionally uncovered Product Vision items are explicit and accurate for this epic.
@@ -36,7 +36,7 @@ Validate one epic plan against the written Product Vision, not memory. Confirm t
 5. Update epic validation status:
    - Add or update the validation section in the target epic file.
    - Record coverage evidence, gaps, skipped checks, and a decision: `Pass`, `Fail`, `Partial`, or `Blocked`.
-   - Do not create story or bugfix files; child work item planning belongs to `suggest-stories`, `add-story`, and `add-bugfix`.
+   - Do not create story or bugfix files; child planning belongs to `suggest-stories`, `add-story`, and `add-bugfix`.
 
 6. Report result:
    - Summarize validation outcome, this epic's Product Vision fit, inconsistencies, blocking open questions, and ADRs created.

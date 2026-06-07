@@ -25,7 +25,7 @@ Suggest candidate story boundaries for exactly one active epic; do not create or
 3. Suggest candidates:
    - Propose the smallest useful story set that can fulfill the epic's in-scope outcome.
    - For each candidate, include purpose, user or system value, in-scope and out-of-scope behavior, acceptance criteria themes, regression boundaries, dependencies, sequencing, verification approach, and overlap risk.
-   - Keep each candidate independently implementable and validatable by `validate-work-plan`.
+   - Keep each candidate independently implementable and validatable by `validate-change-plan`.
    - Do not force a complete story breakdown if the user asked only for the next story or a specific area.
 
 4. Ask for acceptance:

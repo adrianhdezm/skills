@@ -105,7 +105,7 @@
 | Fix | <expected behavior criterion> | 2 | <command, test, log, or manual method> | Pending |
 | Regression | <unchanged behavior criterion> | 3 | <command, test, log, or manual method> | Pending |
 
-## Work Item Validation
+## Change Plan Validation
 
 - Decision: Pending
 - Evidence:
@@ -115,7 +115,7 @@
 
 ## Final Validation
 
-- [ ] Work item passed `validate-work-plan`.
+- [ ] Change plan passed `validate-change-plan`.
 - [ ] Reproduction evidence proves the bug exists or explains why deterministic reproduction is not practical.
 - [ ] Fixed behavior satisfies expected behavior.
 - [ ] Unchanged behavior and regression boundaries still pass.

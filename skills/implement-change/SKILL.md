@@ -1,36 +1,36 @@
 ---
-name: implement-work-item
-description: Implement one validated epic-scoped or standalone story or bugfix as scoped code, test, migration, documentation, and configuration changes. Use after `validate-work-plan` returns `Pass`, or when the user explicitly accepts the risk of implementing an unvalidated or partially validated work item.
+name: implement-change
+description: Implement one validated epic-scoped or standalone story or bugfix as scoped code, test, migration, documentation, and configuration changes. Use after `validate-change-plan` returns `Pass`, or when the user explicitly accepts the risk of implementing an unvalidated or partially validated change plan.
 ---
 
-# Implement Work Item
+# Implement Change
 
 ## Core Rule
 
-Implement exactly one story or bugfix with tight scope, explicit intent, and continuous verification. Normally start only after `validate-work-plan` returns `Pass`; if the user explicitly overrides a missing, `Partial`, `Fail`, or `Blocked` validation result, record that risk before coding. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Implement exactly one story or bugfix with tight scope, explicit intent, and continuous verification. Normally start only after `validate-change-plan` returns `Pass`; if the user explicitly overrides a missing, `Partial`, `Fail`, or `Blocked` validation result, record that risk before coding. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
 1. Load the plan:
-   - Read one epic-scoped work item under `docs/epics/active/<epic>/story_*.md` or `docs/epics/active/<epic>/bugfix_*.md`, or one standalone work item under `docs/standalone-changes/active/story_*.md` or `docs/standalone-changes/active/bugfix_*.md`.
+   - Read one epic-scoped story or bugfix under `docs/epics/active/<epic>/story_*.md` or `docs/epics/active/<epic>/bugfix_*.md`, or one standalone story or bugfix under `docs/standalone-changes/active/story_*.md` or `docs/standalone-changes/active/bugfix_*.md`.
    - For epic-scoped work, read `docs/epics/active/<epic>/epic.md`, its source Product Vision when present, and relevant `docs/knowledge/` concern specs.
    - For standalone work, read `docs/vision.md` when present, active epics when placement could affect scope, sibling standalone changes, and relevant `docs/knowledge/` concern specs.
-   - Confirm the work item passed `validate-work-plan`, or record the user's explicit override and risk.
+   - Confirm the change plan passed `validate-change-plan`, or record the user's explicit override and risk.
    - Check repository status and avoid overwriting unrelated user changes.
    - Extract requirements, expected behavior, unchanged behavior, constraints, implementation tasks, verification steps, and out-of-scope behavior.
 
 2. Resolve blocking ambiguity:
    - Use repository context, planning artifacts, concern specs, documentation, code, logs, and tests before asking the user.
    - Ask before coding when ambiguity affects scope, design, verification strategy, sequencing, ownership, or artifact meaning.
-   - Proceed with a stated assumption when ambiguity is non-blocking, and record it in implementation notes or the work item.
+   - Proceed with a stated assumption when ambiguity is non-blocking, and record it in implementation notes or the selected story or bugfix.
 
 3. Implement task by task:
-   - Work through the work item's `Implementation Tasks` in dependency order unless a clearly stated adjustment is required.
+   - Work through the selected story or bugfix's `Implementation Tasks` in dependency order unless a clearly stated adjustment is required.
    - For bugfixes, add or confirm reproduction coverage before changing the fix path unless the bugfix explains why deterministic reproduction is not practical.
    - Follow repository patterns, naming, architecture, and test conventions.
-   - Keep changes limited to the work item unless a discovered dependency is required.
+   - Keep changes limited to the selected story or bugfix unless a discovered dependency is required.
    - Update implementation task checkboxes only when implementation work is complete and task-level verification has passed.
-   - If the work item cannot be implemented as written, stop and propose a work item or epic edit before coding an alternative.
+   - If the selected story or bugfix cannot be implemented as written, stop and propose a story, bugfix, or epic edit before coding an alternative.
    - Use `document-decisions` when implementation exposes an important durable decision not already dictated by the plan or existing conventions.
 
 4. Handle plan drift explicitly:
@@ -41,11 +41,11 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
 5. Verify while building:
    - Run focused tests, linters, type checks, migrations, or build commands tied to the changed area.
    - Record commands and outcomes for `validate-implementation`.
-   - Add or update tests according to the work item's verification matrix.
+   - Add or update tests according to the selected story or bugfix's verification matrix.
    - After each implementation task, compare the implementation against the extracted checklist and fill missing requirements before moving on.
 
 6. Reconcile before reporting:
-   - Review the selected work item, relevant concern specs, and `epic.md` when the work is epic-scoped against the implementation.
+   - Review the selected story or bugfix, relevant concern specs, and `epic.md` when the work is epic-scoped against the implementation.
    - Fix implementation gaps that are still within the written plan.
    - Raise any remaining mismatch that changes scope, success criteria, or durable design intent.
 
@@ -56,7 +56,7 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
 ## Validation Checklist
 
 - [ ] Work matches the selected story or bugfix and its selected placement.
-- [ ] Work item validation status was checked.
+- [ ] Change plan validation status was checked.
 - [ ] Requirements, constraints, verification steps, and out-of-scope behavior were extracted before implementation.
 - [ ] Bugfix reproduction coverage was added, confirmed, or explicitly impractical.
 - [ ] Blocking ambiguities were resolved before coding affected requirements.

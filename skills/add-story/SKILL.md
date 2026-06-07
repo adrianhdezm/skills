@@ -22,7 +22,7 @@ Add exactly one story. A story is the implementation source of truth for one pla
    - For epic-scoped stories, verify the requested story is within the epic scope.
    - For standalone stories, verify the requested story does not fit an active epic, does not need a new epic, and does not materially change the Product Vision.
    - If an epic-scoped story changes the epic outcome, success criteria, implementation strategy, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
-   - If a standalone story needs multiple coordinated work items, rollout/backout planning, cross-cutting risk tracking, or durable product direction changes, stop and recommend `plan-change`, `create-epic`, or `define-product-vision` as appropriate.
+   - If a standalone story needs multiple coordinated stories or bugfixes, rollout/backout planning, cross-cutting risk tracking, or durable product direction changes, stop and recommend `plan-change`, `create-epic`, or `define-product-vision` as appropriate.
    - If it is a defect fix, use `add-bugfix`.
 
 3. Write the story:
@@ -31,11 +31,11 @@ Add exactly one story. A story is the implementation source of truth for one pla
    - Use [references/story-template.md](references/story-template.md).
    - For standalone placement, include a `Routing Decision` section that records placement, reason, active epics checked, Product Vision impact, epic need, and `plan-change` when it supplied the route.
    - Include acceptance criteria, non-goals, dependencies, implementation tasks, verification, and validation sections.
-   - Keep existing sibling work item statuses intact.
+   - Keep existing sibling story or bugfix statuses intact.
 
 4. Report result:
    - Provide the absolute story path.
-   - Summarize placement fit, assumptions, first implementation task, and recommend `validate-work-plan`.
+   - Summarize placement fit, assumptions, first implementation task, and recommend `validate-change-plan`.
 
 ## Validation Checklist
 
@@ -44,4 +44,4 @@ Add exactly one story. A story is the implementation source of truth for one pla
 - [ ] Non-goals and regression boundaries are explicit where relevant.
 - [ ] Implementation tasks are ordered, concrete, and independently checkable.
 - [ ] Verification includes commands or evidence methods with pass criteria.
-- [ ] Story can feed `validate-work-plan`.
+- [ ] Story can feed `validate-change-plan`.

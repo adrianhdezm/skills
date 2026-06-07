@@ -4,7 +4,7 @@ Cortex is a concern-centric development process for planned product and system
 changes. It turns product intent into a single Product Vision, plans incoming
 changes, suggests epic and story options when decomposition is needed, creates
 validated epics one at a time, adds independently validated stories and bugfixes
-inside those epics or as standalone changes, implements one work item at a time,
+inside those epics or as standalone changes, implements one story or bugfix at a time,
 records validation evidence, updates durable system knowledge, and archives
 completed history.
 
@@ -50,8 +50,8 @@ define-product-vision
   -> validate-epic
   -> suggest-stories optional
   -> add-story or add-bugfix
-  -> validate-work-plan
-  -> implement-work-item
+  -> validate-change-plan
+  -> implement-change
   -> validate-implementation
   -> document-current-system
   -> archive-epic
@@ -72,8 +72,8 @@ plan-change
   -> add-story or add-bugfix under docs/standalone-changes/active/
 
 then:
-  -> validate-work-plan
-  -> implement-work-item
+  -> validate-change-plan
+  -> implement-change
   -> validate-implementation
 ```
 
@@ -96,7 +96,7 @@ plan-change
   -> add-story or add-bugfix under docs/standalone-changes/active/
 
 then:
-  -> validate-work-plan
+  -> validate-change-plan
 ```
 
 `plan-change` inspects Product Vision, active epics, standalone changes, concern
@@ -128,7 +128,7 @@ define-product-vision
   -> validate-epic
   -> suggest-stories optional
   -> add-story
-  -> validate-work-plan
+  -> validate-change-plan
 ```
 
 The Product Vision captures stable project-level product intent, audience,
@@ -157,7 +157,7 @@ source to derive product intent, constraints, non-goals, assumptions, and open
 questions before epic planning begins.
 
 The Product Vision must distinguish behavior the design requires from implementation
-details that belong in epics and child work items. If the design implies product
+details that belong in epics and child stories or bugfixes. If the design implies product
 behavior that is not approved, record it as an open question or assumption
 instead of silently turning it into scope.
 
@@ -179,9 +179,9 @@ wants to move quickly and the repository context is clear. Quick plan may run
 continuous planning pass, but it must still write all artifacts and leave
 validation sections accurate.
 
-Validation gates are not skipped. If quick plan creates an epic or work items
+Validation gates are not skipped. If quick plan creates an epic, stories, or bugfixes
 before formal validation, their validation decisions remain `Pending` until
-`validate-epic` and `validate-work-plan` are run, or until the user explicitly
+`validate-epic` and `validate-change-plan` are run, or until the user explicitly
 accepts the risk of proceeding with an unvalidated plan. Quick plan can skip
 `suggest-stories` when the next story is already obvious.
 
@@ -205,8 +205,8 @@ and regression verification.
 
 ```text
 add-bugfix
-  -> validate-work-plan
-  -> implement-work-item
+  -> validate-change-plan
+  -> implement-change
   -> validate-implementation
 ```
 
@@ -214,7 +214,7 @@ Bugfix work should include a failing reproduction test or deterministic repro
 evidence before the fix whenever practical. If an epic-scoped bugfix changes the
 epic's outcome, public contract, rollout, or material risk profile, update the
 epic and re-run `validate-epic` before implementation. If a standalone bugfix
-needs coordinated rollout, multiple work items, or durable Product Vision
+needs coordinated rollout, multiple stories or bugfixes, or durable Product Vision
 change, route it through `plan-change` before implementation.
 
 Example prompts:
@@ -223,7 +223,7 @@ Example prompts:
   account-invites epic."
 - "Add a Cortex bugfix for this failing test, include unchanged behavior, and
   stop before implementation."
-- "This active epic has a regression in checkout retry. Add a bugfix work item
+- "This active epic has a regression in checkout retry. Add a bugfix
   with root cause analysis and regression checks."
 
 ### Epic Extension
@@ -238,7 +238,7 @@ scope, update the epic and re-run `validate-epic` first.
 Use standalone change planning when `plan-change` determines a story or bugfix is
 self-contained, does not belong to a current active epic, and does not justify a
 new epic. Standalone changes still need a written story or bugfix, a routing
-decision, `validate-work-plan`, `implement-work-item`, and
+decision, `validate-change-plan`, `implement-change`, and
 `validate-implementation`.
 
 Outputs:
@@ -319,7 +319,7 @@ concern knowledge, and has no blocking open questions. It does not validate
 whole Product Vision coverage across all epics; use `suggest-epics` for broader
 Product Vision gap discovery and candidate epic suggestions. A passing epic can accept stories and
 bugfixes. A failed, partial, or blocked epic should be corrected before child
-work items are created.
+stories or bugfixes are created.
 
 Output: updated `Epic Validation` section in the target `epic.md` file.
 
@@ -340,10 +340,10 @@ dependencies, sequencing, verification themes, assumptions, and open questions.
 
 ### 7. Add Stories Or Bugfixes
 
-Use `add-story` or `add-bugfix` for exactly one work item inside a validated
+Use `add-story` or `add-bugfix` for exactly one story or bugfix inside a validated
 active epic or under `docs/standalone-changes/active/`.
 
-A story is a planned value slice. A bugfix is corrective work. Each work item
+A story is a planned value slice. A bugfix is corrective work. Each artifact
 includes purpose, scope, non-scope, implementation tasks, dependencies,
 verification steps, pass criteria, and validation sections. Epic-scoped work can
 be added later to extend an active epic without rewriting existing child work.
@@ -357,22 +357,22 @@ Outputs:
 - `docs/standalone-changes/active/story_<name>.md`
 - `docs/standalone-changes/active/bugfix_<name>.md`
 
-### 8. Validate One Work Plan
+### 8. Validate One Change Plan
 
-Use `validate-work-plan` before implementation starts.
+Use `validate-change-plan` before implementation starts.
 
 Validation checks that one story or bugfix plan fits its selected placement,
 preserves scope, includes executable verification, and does not contradict the
 Product Vision, active epic when present, concern knowledge, or sibling work
-items. Passing work plans can feed `implement-work-item`.
+stories or bugfixes. Passing change plans can feed `implement-change`.
 
-Output: updated `Work Item Validation` section in the selected story or bugfix.
+Output: updated `Change Plan Validation` section in the selected story or bugfix.
 
-### 9. Implement One Work Item
+### 9. Implement One Change
 
-Use `implement-work-item` after `validate-work-plan` passes and the user wants
+Use `implement-change` after `validate-change-plan` passes and the user wants
 the work built. If the user explicitly asks to implement an unvalidated or
-partially validated work item, record the override and risk before coding.
+partially validated change plan, record the override and risk before coding.
 
 Implementation follows exactly one `story_*.md` or `bugfix_*.md`, plus
 `epic.md` for epic-scoped work. It should keep scope tight, follow repository
@@ -383,7 +383,7 @@ implementation should be captured with `document-decisions` when they meet ADR
 criteria.
 
 Output: scoped code, test, migration, documentation, or configuration changes,
-plus updated work item status where appropriate.
+plus updated story or bugfix status where appropriate.
 
 ### 10. Validate Implementation
 
@@ -394,7 +394,7 @@ Validation checks implemented work against the written Product Vision when
 present, active epic when present, selected story or bugfix plan, implementation
 task verification steps, verification matrix rows, and repository quality gates.
 It records pass, fail, partial, blocked, skipped checks, command output,
-evidence, and gaps in the selected work item file.
+evidence, and gaps in the selected story or bugfix file.
 
 Output: updated `Final Validation`, `Verification Matrix`, and
 `Validation Result` sections in the selected story or bugfix.
@@ -433,7 +433,7 @@ Output: archived epic folder and archive summary.
 The process has three explicit gates:
 
 - `validate-epic` decides whether one active epic can accept stories and bugfixes.
-- `validate-work-plan` decides whether one story or bugfix plan can feed
+- `validate-change-plan` decides whether one story or bugfix plan can feed
   implementation.
 - `validate-implementation` decides whether implemented work satisfies the
   selected story or bugfix plan.

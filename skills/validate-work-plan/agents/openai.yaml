@@ -1,4 +1,0 @@
-interface:
-  display_name: "Validate Work Plan"
-  short_description: "Check story or bugfix readiness"
-  default_prompt: "Use $validate-work-plan to verify one epic-scoped or standalone story or bugfix fits its selected placement and has complete implementation tasks and verification before coding."

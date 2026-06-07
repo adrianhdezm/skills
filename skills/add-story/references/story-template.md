@@ -68,7 +68,7 @@ Use EARS notation where possible.
 | --- | --- | --- | --- |
 | <criterion> | <task number(s)> | <command, test, review, metric, or manual method> | Pending |
 
-## Work Item Validation
+## Change Plan Validation
 
 - Decision: Pending
 - Evidence:
@@ -78,7 +78,7 @@ Use EARS notation where possible.
 
 ## Final Validation
 
-- [ ] Work item passed `validate-work-plan`.
+- [ ] Change plan passed `validate-change-plan`.
 - [ ] All implementation task verification passed.
 - [ ] Every acceptance criterion has matching verification evidence.
 - [ ] Every regression boundary has matching verification evidence.

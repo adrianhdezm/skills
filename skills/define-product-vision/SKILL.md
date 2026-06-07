@@ -7,7 +7,7 @@ description: Define the project-level product vision by turning product intent, 
 
 ## Core Rule
 
-Maintain exactly one Product Vision per project at `docs/vision.md`. It is the stable project-level source of truth for why the product exists, who it serves, what outcomes matter, and what constraints shape delivery. The required flow is `define-product-vision -> plan-change optional -> suggest-epics optional -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix -> validate-work-plan`; use `plan-change` for concrete incoming requests with unclear placement and `suggest-epics` when the user needs brainstorming, vision slicing, or gap discovery. Epics and standalone changes drive specific changes; the Product Vision should change only when the durable product direction changes. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Maintain exactly one Product Vision per project at `docs/vision.md`. It is the stable project-level source of truth for why the product exists, who it serves, what outcomes matter, and what constraints shape delivery. The required flow is `define-product-vision -> plan-change optional -> suggest-epics optional -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix -> validate-change-plan`; use `plan-change` for concrete incoming requests with unclear placement and `suggest-epics` when the user needs brainstorming, vision slicing, or gap discovery. Epics and standalone changes drive specific changes; the Product Vision should change only when the durable product direction changes. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 

@@ -21,7 +21,7 @@ Add exactly one bugfix. A bugfix is the implementation source of truth for corre
    - Capture current defective behavior, expected behavior, unchanged behavior, reproduction evidence, suspected root cause, affected surfaces, and fix constraints.
    - For epic-scoped bugfixes, if the fix changes the epic outcome, public contract, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
    - For standalone bugfixes, verify the bugfix does not fit an active epic, does not need a new epic, and does not materially change the Product Vision.
-   - If a standalone bugfix needs multiple coordinated work items, rollout/backout planning, cross-cutting risk tracking, or durable product direction changes, stop and recommend `plan-change`, `create-epic`, or `define-product-vision` as appropriate.
+   - If a standalone bugfix needs multiple coordinated stories or bugfixes, rollout/backout planning, cross-cutting risk tracking, or durable product direction changes, stop and recommend `plan-change`, `create-epic`, or `define-product-vision` as appropriate.
    - Prefer a failing reproduction test or deterministic repro command. If impossible, record why and use the closest reliable evidence.
 
 3. Write the bugfix:
@@ -33,7 +33,7 @@ Add exactly one bugfix. A bugfix is the implementation source of truth for corre
 
 4. Report result:
    - Provide the absolute bugfix path.
-   - Summarize placement fit, root cause confidence, fix boundary, reproduction evidence, assumptions, and recommend `validate-work-plan`.
+   - Summarize placement fit, root cause confidence, fix boundary, reproduction evidence, assumptions, and recommend `validate-change-plan`.
 
 ## Validation Checklist
 
@@ -43,4 +43,4 @@ Add exactly one bugfix. A bugfix is the implementation source of truth for corre
 - [ ] Bugfix is inside the epic scope, or has a recorded standalone routing decision.
 - [ ] Root cause and fix boundary are specific enough for surgical implementation.
 - [ ] Implementation tasks include repro, fix, and regression verification.
-- [ ] Bugfix can feed `validate-work-plan`.
+- [ ] Bugfix can feed `validate-change-plan`.
