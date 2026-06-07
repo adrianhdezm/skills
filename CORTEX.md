@@ -54,7 +54,7 @@ define-product-vision
   -> suggest-epics
   -> create-epic
   -> validate-epic
-  -> suggest-stories
+  -> suggest-stories optional
   -> add-story or add-bugfix
   -> validate-change-plan
   -> implement-change
@@ -69,8 +69,9 @@ Notes:
   intent, user goals, constraints, assumptions, non-goals, and open questions.
 - `suggest-epics` should be used to discover candidate delivery boundaries
   before selecting the first epic.
-- `suggest-stories` should be used after an epic passes validation to find the
-  story set needed to fulfill that epic.
+- `suggest-stories` can be used after an epic passes validation, and again any
+  time while the epic is active, to read existing stories and bugfixes and
+  suggest remaining story coverage for the epic goals.
 - `archive-epic` is used only after implementation, validation, and
   current-system documentation are complete, or when the epic is intentionally
   closed.
@@ -111,7 +112,7 @@ define-product-vision if durable product direction changes
   -> suggest-epics optional
   -> create-epic
   -> validate-epic
-  -> suggest-stories
+  -> suggest-stories optional
   -> add-story
   -> validate-change-plan
   -> implement-change
@@ -128,8 +129,10 @@ Use `suggest-epics` when the delivery boundary is unclear, when multiple epics
 could satisfy the request, or when the feature may overlap archived or active
 work. Skip it when the user has already selected a specific epic outcome.
 
-Use `suggest-stories` after `validate-epic` so the feature can be decomposed
-into independently implementable value slices before creating story files.
+Use `suggest-stories` after `validate-epic` when the remaining story coverage is
+unclear, when existing child work needs coverage review, or when the user wants
+candidate value slices before creating story files. Skip it when the next story
+or bugfix is already specific.
 
 ### 4. Implement An Existing Cortex Story Or Bugfix
 
@@ -141,7 +144,7 @@ validate-change-plan if not already passing
   -> implement-change
   -> validate-implementation
   -> document-current-system
-  -> archive standalone change or archive epic when complete
+  -> archive-epic when epic is complete
 ```
 
 Implementation follows exactly one `story_*.md` or `bugfix_*.md`, plus
@@ -166,7 +169,7 @@ then:
   -> implement-change
   -> validate-implementation
   -> document-current-system
-  -> archive standalone change or archive epic when complete
+  -> archive-epic when epic is complete
 ```
 
 `plan-change` is a router, not the complete process. It inspects the Product
@@ -202,8 +205,8 @@ dependencies, or material risk profile, update `epic.md` and re-run
 `validate-epic` before adding the child artifact.
 
 Use `suggest-stories` when the missing work is not yet clearly bounded or when
-the epic needs coverage review. Skip it when the next story or bugfix is already
-specific.
+the epic needs coverage review against existing stories and bugfixes. Skip it
+when the next story or bugfix is already specific.
 
 ## Skill Reference
 
@@ -241,9 +244,10 @@ child artifacts are created.
 
 ### Story And Bugfix Planning
 
-Use `suggest-stories` after `validate-epic` when the user wants to plan the
-story set needed to fulfill one active epic, find missing child-work coverage,
-or choose the next independently implementable value slice. It suggests story
+Use `suggest-stories` after `validate-epic`, and any time while the epic remains
+active, when the user wants to plan the story set needed to fulfill one active
+epic, find missing child-work coverage against existing stories and bugfixes, or
+choose the next independently implementable value slice. It suggests story
 boundaries; it does not write story files.
 
 Use `add-story` or `add-bugfix` for exactly one story or bugfix inside a
@@ -286,10 +290,9 @@ summary, preserves validation evidence and decision links, records deferred or
 cancelled work, and moves the epic folder from `docs/epics/active/<epic>/` to
 `docs/epics/archived/<epic>/`.
 
-Completed standalone changes may be moved from `docs/standalone-changes/active/`
-to `docs/standalone-changes/archived/` after validation and any required
-current-system documentation. They do not require `archive-epic` unless the
-project adds a dedicated standalone archive skill.
+Standalone changes do not use an archive workflow. After validation and any
+required current-system documentation, leave the standalone change artifact as
+the durable planning and validation record.
 
 ## Artifact Layout
 
@@ -310,8 +313,6 @@ planned or changed, not into the skills repository:
   do not belong to a current active epic and do not need a new epic.
 - `docs/standalone-changes/active/bugfix_<name>.md` - surgical defect fixes
   that do not belong to a current active epic and do not need a new epic.
-- `docs/standalone-changes/archived/` - completed or closed standalone change
-  history.
 - `docs/knowledge/<concern>/` - current system knowledge maintained by
   `document-current-system`.
 - `docs/adrs/` - important durable decisions captured by
@@ -335,6 +336,27 @@ Validation decisions use these result values:
 - `Partial` - some requirements pass, but remaining gaps are documented.
 - `Blocked` - validation cannot continue without missing information, access,
   environment, credentials, ownership, or thresholds.
+
+Gate transitions:
+
+- `validate-epic`:
+  - `Pass` allows `suggest-stories`, `add-story`, and `add-bugfix`.
+  - `Fail` or `Blocked` must be corrected before child artifacts are created.
+  - `Partial` does not allow child artifacts unless the user explicitly accepts
+    the documented gaps and the child work does not depend on them.
+- `validate-change-plan`:
+  - `Pass` allows `implement-change`.
+  - `Fail`, `Partial`, or `Blocked` should be corrected before implementation.
+  - A user may explicitly override a missing or non-passing result; record the
+    override and risk in the selected story or bugfix before coding.
+- `validate-implementation`:
+  - `Pass` allows `document-current-system` and epic completion checks.
+  - `Partial` allows `document-current-system` or epic closure only when the
+    user explicitly approves the remaining gaps and the documented facts are
+    true current system state.
+  - `Fail` or `Blocked` should return to `implement-change`,
+    `validate-change-plan`, or the owning artifact skill before current-system
+    documentation or epic closure.
 
 ## Decision Records
 

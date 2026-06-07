@@ -19,6 +19,9 @@ Add exactly one bugfix. A bugfix is the implementation source of truth for corre
 
 2. Analyze the defect:
    - Capture current defective behavior, expected behavior, unchanged behavior, reproduction evidence, suspected root cause, affected surfaces, and fix constraints.
+   - For epic-scoped bugfixes, verify `Epic Validation` is `Pass` before creating child work.
+   - If the epic validation is missing, `Fail`, or `Blocked`, stop and recommend `validate-epic` or epic corrections before creating the bugfix.
+   - If the epic validation is `Partial`, create the bugfix only when the user explicitly accepts the documented gaps and the bugfix does not depend on them; record the override in the bugfix.
    - For epic-scoped bugfixes, if the fix changes the epic outcome, public contract, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
    - For standalone bugfixes, verify the bugfix does not fit an active epic, does not need a new epic, and does not materially change the Product Vision.
    - If a standalone bugfix needs multiple coordinated stories or bugfixes, rollout/backout planning, cross-cutting risk tracking, or durable product direction changes, stop and recommend `plan-change`, `create-epic`, or `define-product-vision` as appropriate.
@@ -41,6 +44,7 @@ Add exactly one bugfix. A bugfix is the implementation source of truth for corre
 - [ ] Expected behavior is observable and testable.
 - [ ] Unchanged behavior protects regression-sensitive paths.
 - [ ] Bugfix is inside the epic scope, or has a recorded standalone routing decision.
+- [ ] Epic-scoped bugfixes are added only under a passing epic validation, or an explicit `Partial` override is recorded.
 - [ ] Root cause and fix boundary are specific enough for surgical implementation.
 - [ ] Implementation tasks include repro, fix, and regression verification.
 - [ ] Bugfix can feed `validate-change-plan`.

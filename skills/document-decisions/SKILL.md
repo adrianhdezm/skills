@@ -13,11 +13,19 @@ Write ADRs only for important durable decisions, not routine implementation note
 
 Write ADRs for:
 
-- Architectural choices, including data model, execution model, and API shape.
+- Architecture choices, including components, boundaries, data models,
+  execution models, and API shape.
 - Integration strategy, especially how components interact at boundaries.
+- Platform contracts that other modules, services, teams, or features depend on.
+- Security decisions about authentication, authorization, data protection,
+  privacy, audit, abuse prevention, or threat controls.
+- Operations and infrastructure decisions about deployment, environments,
+  observability, recovery, provisioned resources, or managed services.
 - Test isolation or simulation approaches.
 - Concurrency or consistency strategies.
 - Performance tradeoffs with measurable impact.
+- Durable product behavior decisions with long-term user, customer, operator, or
+  compatibility consequences.
 
 Do not write ADRs for:
 
@@ -52,7 +60,7 @@ Do not write ADRs for:
 ## Validation Checklist
 
 - [ ] The decision is important, durable, and high-consequence enough to justify an ADR.
-- [ ] The decision matches an allowed ADR category.
+- [ ] The decision matches an allowed ADR category from Cortex decision-record policy.
 - [ ] Routine, reversible, local, dictated, single-option, or low-impact decisions were not documented as ADRs.
 - [ ] Context, options, decision, and consequences are explicit.
 - [ ] Affected concerns and evidence are linked.

@@ -16,6 +16,8 @@ the supporting process documentation.
   documentation loaded only when needed.
 - `skills/<skill>/agents/openai.yaml` - optional UI metadata for showing skills
   in Codex.
+- `scripts/` - repository maintenance checks, including Cortex consistency
+  validation.
 
 ## Existing Plugins
 

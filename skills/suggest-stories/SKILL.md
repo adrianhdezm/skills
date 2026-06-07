@@ -1,13 +1,13 @@
 ---
 name: suggest-stories
-description: Suggest candidate stories for one active epic without creating files until the user accepts specific suggestions. Use after `validate-epic` when the user wants to plan the story set needed to fulfill an epic, find missing story coverage, or choose the next independently implementable value slices.
+description: Suggest remaining candidate stories for one active epic by reading the epic plus existing stories and bugfixes, without creating files until the user accepts specific suggestions. Use after `validate-epic`, and any time while the epic is active, to plan or revisit the story set needed to fulfill an epic, find missing story coverage, or choose the next independently implementable value slices.
 ---
 
 # Suggest Stories
 
 ## Core Rule
 
-Suggest candidate story boundaries for exactly one active epic; do not create or modify story files unless the user explicitly accepts one or more suggestions and asks you to proceed with `add-story`. This skill separates story decomposition from story artifact creation. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Suggest remaining candidate story boundaries for exactly one active epic by comparing the epic goals against existing stories and bugfixes; do not create or modify story files unless the user explicitly accepts one or more suggestions and asks you to proceed with `add-story`. This skill separates story coverage review from story artifact creation and can be rerun while the epic remains active. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -23,7 +23,7 @@ Suggest candidate story boundaries for exactly one active epic; do not create or
    - Distinguish planned value slices from corrective defect work. Recommend `add-bugfix` for defects that need root cause and regression preservation.
 
 3. Suggest candidates:
-   - Propose the smallest useful story set that can fulfill the epic's in-scope outcome.
+   - Propose the smallest useful remaining story set that can fulfill the epic's in-scope outcome.
    - For each candidate, include purpose, user or system value, in-scope and out-of-scope behavior, acceptance criteria themes, regression boundaries, dependencies, sequencing, verification approach, and overlap risk.
    - Keep each candidate independently implementable and validatable by `validate-change-plan`.
    - Do not force a complete story breakdown if the user asked only for the next story or a specific area.

@@ -19,6 +19,9 @@ Add exactly one story. A story is the implementation source of truth for one pla
    - If the user asks to plan or create all stories needed for the epic, recommend `suggest-stories` before creating files.
 
 2. Confirm fit:
+   - For epic-scoped stories, verify `Epic Validation` is `Pass` before creating child work.
+   - If the epic validation is missing, `Fail`, or `Blocked`, stop and recommend `validate-epic` or epic corrections before creating the story.
+   - If the epic validation is `Partial`, create the story only when the user explicitly accepts the documented gaps and the story does not depend on them; record the override in the story.
    - For epic-scoped stories, verify the requested story is within the epic scope.
    - For standalone stories, verify the requested story does not fit an active epic, does not need a new epic, and does not materially change the Product Vision.
    - If an epic-scoped story changes the epic outcome, success criteria, implementation strategy, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
@@ -40,6 +43,7 @@ Add exactly one story. A story is the implementation source of truth for one pla
 ## Validation Checklist
 
 - [ ] Story is inside the epic scope, or has a recorded standalone routing decision.
+- [ ] Epic-scoped stories are added only under a passing epic validation, or an explicit `Partial` override is recorded.
 - [ ] Story has user or system value and testable acceptance criteria.
 - [ ] Non-goals and regression boundaries are explicit where relevant.
 - [ ] Implementation tasks are ordered, concrete, and independently checkable.

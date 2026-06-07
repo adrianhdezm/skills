@@ -12,10 +12,10 @@ Maintain exactly one Product Vision per project at `docs/vision.md`. It is the s
 ## Workflow
 
 1. Gather product intent:
-   - Ask for the problem or opportunity, target users, durable success outcome, constraints, non-goals, deadlines, known solution ideas, and whether the Product Vision covers only the MVP or future phases too.
-   - Ask whether meeting notes, stakeholder briefs, designs, pictures, previous conversations, inspiration products, or other references should inform the Product Vision.
-   - Ask what concerns may be affected: product, platform, engineering, architecture, security, operations, or infrastructure.
-   - If the request is vague, ask the smallest set of questions needed to make planning possible.
+   - Extract the problem or opportunity, target users, durable success outcome, constraints, non-goals, deadlines, known solution ideas, and MVP or future-phase boundary from the user request and available repository evidence.
+   - Use meeting notes, stakeholder briefs, designs, pictures, previous conversations, inspiration products, or other references when the user provides them or the repository already contains them.
+   - Infer affected concerns from evidence when possible: product, platform, engineering, architecture, security, operations, or infrastructure.
+   - Ask only for blocking gaps that cannot be discovered from context and would change product direction, priority, risk, ownership, or artifact meaning.
 
 2. Inspect existing context:
    - Read the existing `docs/vision.md` when present.
@@ -29,7 +29,7 @@ Maintain exactly one Product Vision per project at `docs/vision.md`. It is the s
    - Capture vision, problem, audience, goals, success signals, principles, constraints, non-goals, assumptions, open questions, and references.
    - Keep the Product Vision strategic. Do not add user stories, EARS acceptance criteria, detailed feature scope, suspected surfaces, implementation strategy, verification strategy, dependencies, rollout, or risk registers.
    - Leave epic options to `suggest-epics`, delivery scope to `create-epic`, and executable acceptance and verification detail to story or bugfix artifacts.
-   - Ask before finalizing product decisions that materially affect direction, priority, risk, or ownership.
+   - Ask before finalizing product decisions that materially affect direction, priority, risk, or ownership when the answer cannot be inferred from evidence.
 
 4. Check vision quality before planning:
    - Check the bounded Product Vision for logical inconsistencies, ambiguous product terms, conflicting constraints, unclear audience, unclear success signals, and hidden implementation commitments.
