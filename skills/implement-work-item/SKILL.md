@@ -1,6 +1,6 @@
 ---
 name: implement-work-item
-description: Implement one validated story or bugfix as scoped code, test, migration, documentation, and configuration changes. Use after `validate-work-plan` returns `Pass`, or when the user explicitly accepts the risk of implementing an unvalidated or partially validated work item.
+description: Implement one validated epic-scoped or standalone story or bugfix as scoped code, test, migration, documentation, and configuration changes. Use after `validate-work-plan` returns `Pass`, or when the user explicitly accepts the risk of implementing an unvalidated or partially validated work item.
 ---
 
 # Implement Work Item
@@ -12,8 +12,9 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
 ## Workflow
 
 1. Load the plan:
-   - Read one `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`.
-   - Read `docs/epics/active/<epic>/epic.md`, its source Product Vision when present, and relevant `docs/knowledge/` concern specs.
+   - Read one epic-scoped work item under `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`, or one standalone work item under `docs/standalone-changes/active/stories/story_*.md` or `docs/standalone-changes/active/bugfixes/bugfix_*.md`.
+   - For epic-scoped work, read `docs/epics/active/<epic>/epic.md`, its source Product Vision when present, and relevant `docs/knowledge/` concern specs.
+   - For standalone work, read `docs/vision.md` when present, active epics when placement could affect scope, sibling standalone changes, and relevant `docs/knowledge/` concern specs.
    - Confirm the work item passed `validate-work-plan`, or record the user's explicit override and risk.
    - Check repository status and avoid overwriting unrelated user changes.
    - Extract requirements, expected behavior, unchanged behavior, constraints, implementation tasks, verification steps, and out-of-scope behavior.
@@ -33,7 +34,7 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
    - Use `document-decisions` when implementation exposes an important durable decision not already dictated by the plan or existing conventions.
 
 4. Handle plan drift explicitly:
-   - Treat `epic.md` and the selected story or bugfix file as the source of truth.
+   - Treat the selected story or bugfix file as the source of truth, plus `epic.md` for epic-scoped work.
    - If implementation discovers an impossible, contradictory, obsolete, or materially risky requirement, stop affected work.
    - Propose a concrete edit to the owning artifact and wait for approval before implementing materially different behavior.
 
@@ -44,7 +45,7 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
    - After each implementation task, compare the implementation against the extracted checklist and fill missing requirements before moving on.
 
 6. Reconcile before reporting:
-   - Review `epic.md`, the selected work item, and relevant concern specs against the implementation.
+   - Review the selected work item, relevant concern specs, and `epic.md` when the work is epic-scoped against the implementation.
    - Fix implementation gaps that are still within the written plan.
    - Raise any remaining mismatch that changes scope, success criteria, or durable design intent.
 
@@ -54,7 +55,7 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
 
 ## Validation Checklist
 
-- [ ] Work matches the selected story or bugfix and its active epic.
+- [ ] Work matches the selected story or bugfix and its selected placement.
 - [ ] Work item validation status was checked.
 - [ ] Requirements, constraints, verification steps, and out-of-scope behavior were extracted before implementation.
 - [ ] Bugfix reproduction coverage was added, confirmed, or explicitly impractical.

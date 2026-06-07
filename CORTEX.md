@@ -1,12 +1,12 @@
 # Cortex
 
 Cortex is a concern-centric development process for planned product and system
-changes. It turns product intent into a single Product Vision, suggests epic
-and story options when decomposition is needed, creates validated epics one at a
-time, adds
-independently validated stories and bugfixes inside those epics, implements one
-work item at a time, records validation evidence, updates durable system
-knowledge, and archives completed epic history.
+changes. It turns product intent into a single Product Vision, plans incoming
+changes, suggests epic and story options when decomposition is needed, creates
+validated epics one at a time, adds independently validated stories and bugfixes
+inside those epics or as standalone changes, implements one work item at a time,
+records validation evidence, updates durable system knowledge, and archives
+completed history.
 
 The skills are designed to be used in order. Each planning artifact becomes the
 source of truth for the next step, and each validation skill checks the written
@@ -27,6 +27,12 @@ planned or changed, not into the skills repository:
   added by `add-bugfix`.
 - `docs/epics/archived/<epic>/` - completed or closed epic history moved by
   `archive-epic`.
+- `docs/standalone-changes/active/stories/story_<name>.md` - planned value
+  slices that do not belong to a current active epic and do not need a new epic.
+- `docs/standalone-changes/active/bugfixes/bugfix_<name>.md` - surgical defect
+  fixes that do not belong to a current active epic and do not need a new epic.
+- `docs/standalone-changes/archived/` - completed or closed standalone change
+  history.
 - `docs/knowledge/<concern>/` - current system knowledge maintained by
   `document-current-system`.
 - `docs/adrs/` - important durable decisions captured by
@@ -38,6 +44,7 @@ Use this sequence for planned product or system changes:
 
 ```text
 define-product-vision
+  -> plan-change optional
   -> suggest-epics optional
   -> create-epic
   -> validate-epic
@@ -50,15 +57,63 @@ define-product-vision
   -> archive-epic
 ```
 
-`document-decisions` is used when a Product Vision, epic, story, bugfix, implementation, or
-validation result exposes an important durable decision that future maintainers
-must understand. It is not a mandatory step for every change.
+`document-decisions` is used when a Product Vision, epic, standalone change,
+story, bugfix, implementation, or validation result exposes an important
+durable decision that future maintainers must understand. It is not a mandatory
+step for every change.
+
+For concrete incoming change requests where epic fit is unclear, use this
+shorter routing sequence:
+
+```text
+plan-change
+  -> create-epic when a new delivery outcome is needed
+  -> add-story or add-bugfix under an active epic
+  -> add-story or add-bugfix under docs/standalone-changes/active/
+
+then:
+  -> validate-work-plan
+  -> implement-work-item
+  -> validate-implementation
+```
 
 ## Workflow Variants
 
-Cortex supports five planning entry points. Choose the variant that matches the
+Cortex supports seven planning entry points. Choose the variant that matches the
 starting material and risk level, while preserving durable artifact types and
 validation gates.
+
+### Change Planning
+
+Use change planning when the user brings one concrete request and it is not yet
+clear whether the request belongs to an active epic, should be a standalone
+story or bugfix, or needs a new epic.
+
+```text
+plan-change
+  -> create-epic, or
+  -> add-story or add-bugfix under an active epic, or
+  -> add-story or add-bugfix under docs/standalone-changes/active/
+
+then:
+  -> validate-work-plan
+```
+
+`plan-change` inspects Product Vision, active epics, standalone changes, concern
+knowledge, and relevant repository context. It classifies the request as planned
+value or corrective work, checks active epic fit, checks Product Vision impact,
+and decides whether an epic is needed. Standalone changes are allowed only when
+the request is self-contained, outside active epic scope, and does not require a
+new epic.
+
+Example prompts:
+
+- "Use Cortex to plan this small settings-page copy change. If it does not fit
+  an active epic, create a standalone story."
+- "Plan this failing test as a Cortex change. Route it to the right active epic
+  or standalone bugfix before implementation."
+- "Use `plan-change` to decide whether this request needs an epic or can be a
+  standalone change: <paste request>"
 
 ### Requirements-First
 
@@ -120,8 +175,9 @@ Example prompts:
 
 Use quick plan only for well-understood, low-risk work where the user explicitly
 wants to move quickly and the repository context is clear. Quick plan may run
-`define-product-vision`, `create-epic`, and `add-story` in one continuous planning pass,
-but it must still write all artifacts and leave validation sections accurate.
+`define-product-vision`, `plan-change`, `create-epic`, and `add-story` in one
+continuous planning pass, but it must still write all artifacts and leave
+validation sections accurate.
 
 Validation gates are not skipped. If quick plan creates an epic or work items
 before formal validation, their validation decisions remain `Pending` until
@@ -142,9 +198,10 @@ Example prompts:
 ### Bugfix
 
 Use bugfix planning when the work starts from defective behavior that should be
-corrected surgically inside an active epic. Bugfixes do not create child epics;
-the bugfix file owns current behavior, expected behavior, unchanged behavior,
-root cause, fix boundary, implementation tasks, and regression verification.
+corrected surgically inside an active epic or as a standalone change. Bugfixes
+do not create child epics; the bugfix file owns current behavior, expected
+behavior, unchanged behavior, root cause, fix boundary, implementation tasks,
+and regression verification.
 
 ```text
 add-bugfix
@@ -154,9 +211,11 @@ add-bugfix
 ```
 
 Bugfix work should include a failing reproduction test or deterministic repro
-evidence before the fix whenever practical. If the bugfix changes the epic's
-outcome, public contract, rollout, or material risk profile, update the epic and
-re-run `validate-epic` before implementation.
+evidence before the fix whenever practical. If an epic-scoped bugfix changes the
+epic's outcome, public contract, rollout, or material risk profile, update the
+epic and re-run `validate-epic` before implementation. If a standalone bugfix
+needs coordinated rollout, multiple work items, or durable Product Vision
+change, route it through `plan-change` before implementation.
 
 Example prompts:
 
@@ -173,6 +232,19 @@ Use epic extension when an active epic needs more work after its initial stories
 or bugfixes were created. Add a new `story_*.md` or `bugfix_*.md` instead of
 rewriting existing child work. If the new work is outside the current epic
 scope, update the epic and re-run `validate-epic` first.
+
+### Standalone Change
+
+Use standalone change planning when `plan-change` determines a story or bugfix is
+self-contained, does not belong to a current active epic, and does not justify a
+new epic. Standalone changes still need a written story or bugfix, a routing
+decision, `validate-work-plan`, `implement-work-item`, and
+`validate-implementation`.
+
+Outputs:
+
+- `docs/standalone-changes/active/stories/story_<name>.md`
+- `docs/standalone-changes/active/bugfixes/bugfix_<name>.md`
 
 ## Process Stages
 
@@ -192,7 +264,23 @@ only when the stable product direction changes.
 
 Output: `docs/vision.md`.
 
-### 2. Suggest Epic Options
+### 2. Plan One Change
+
+Use `plan-change` when one incoming request may be too small for an epic, may
+belong to an active epic, may be a bugfix, or may require a new epic before
+story or bugfix planning.
+
+This skill reads the Product Vision, active epics, existing standalone changes,
+concern knowledge, and relevant repository evidence. It routes the request to
+`create-epic`, `add-story`, or `add-bugfix`. When durable Product Vision work is
+needed first, it recommends `define-product-vision` and leaves the route
+unselected until product direction is updated. It does not replace the
+artifact-writing skills; it records the planning path and target placement so
+the next skill can write the right artifact.
+
+Output: routing decision, recommended next skill, and target path shape.
+
+### 3. Suggest Epic Options
 
 Use `suggest-epics` after the Product Vision is ready when the user wants brainstorming,
 vision slicing, gap discovery, or candidate epic suggestions.
@@ -207,7 +295,7 @@ specific suggestion and asks to proceed with `create-epic`.
 Output: suggested epic candidates, Product Vision coverage notes, overlap risks,
 dependencies, sequencing, assumptions, and open questions.
 
-### 3. Create One Epic
+### 4. Create One Epic
 
 Use `create-epic` after the Product Vision is ready and the user has selected one specific
 delivery outcome to plan.
@@ -220,7 +308,7 @@ stories and bugfixes can be added over time.
 
 Output: `docs/epics/active/<epic>/epic.md`.
 
-### 4. Validate One Epic
+### 5. Validate One Epic
 
 Use `validate-epic` before adding child stories or bugfixes.
 
@@ -235,7 +323,7 @@ work items are created.
 
 Output: updated `Epic Validation` section in the target `epic.md` file.
 
-### 5. Suggest Story Options
+### 6. Suggest Story Options
 
 Use `suggest-stories` after `validate-epic` when the user wants to plan the
 story set needed to fulfill one active epic, find missing child-work coverage,
@@ -250,64 +338,68 @@ routed to `add-bugfix`.
 Output: suggested story candidates, epic coverage notes, overlap risks,
 dependencies, sequencing, verification themes, assumptions, and open questions.
 
-### 6. Add Stories Or Bugfixes
+### 7. Add Stories Or Bugfixes
 
 Use `add-story` or `add-bugfix` for exactly one work item inside a validated
-active epic.
+active epic or under `docs/standalone-changes/active/`.
 
-A story is a planned value slice inside the epic. A bugfix is corrective work
-inside the epic. Each work item includes purpose, scope, non-scope,
-implementation tasks, dependencies, verification steps, pass criteria, and
-validation sections. Work items can be added later to extend an active epic
-without rewriting existing child work.
+A story is a planned value slice. A bugfix is corrective work. Each work item
+includes purpose, scope, non-scope, implementation tasks, dependencies,
+verification steps, pass criteria, and validation sections. Epic-scoped work can
+be added later to extend an active epic without rewriting existing child work.
+Standalone work must include a routing decision explaining why it does not
+belong to an active epic and does not need a new epic.
 
 Outputs:
 
 - `docs/epics/active/<epic>/stories/story_<name>.md`
 - `docs/epics/active/<epic>/bugfixes/bugfix_<name>.md`
+- `docs/standalone-changes/active/stories/story_<name>.md`
+- `docs/standalone-changes/active/bugfixes/bugfix_<name>.md`
 
-### 7. Validate One Work Plan
+### 8. Validate One Work Plan
 
 Use `validate-work-plan` before implementation starts.
 
-Validation checks that one story or bugfix plan fits the epic, preserves scope,
-includes executable verification, and does not contradict the Product Vision, epic, concern
-knowledge, or sibling work items. Passing work plans can feed
-`implement-work-item`.
+Validation checks that one story or bugfix plan fits its selected placement,
+preserves scope, includes executable verification, and does not contradict the
+Product Vision, active epic when present, concern knowledge, or sibling work
+items. Passing work plans can feed `implement-work-item`.
 
 Output: updated `Work Item Validation` section in the selected story or bugfix.
 
-### 8. Implement One Work Item
+### 9. Implement One Work Item
 
 Use `implement-work-item` after `validate-work-plan` passes and the user wants
 the work built. If the user explicitly asks to implement an unvalidated or
 partially validated work item, record the override and risk before coding.
 
-Implementation follows the `epic.md` and exactly one `story_*.md` or
-`bugfix_*.md`. It should keep scope tight, follow repository conventions, update
-implementation task checkboxes only when work is complete and task-level
-verification has passed, and stop for approval before materially changing the
-plan. Important durable design decisions discovered during implementation
-should be captured with `document-decisions` when they meet ADR criteria.
+Implementation follows exactly one `story_*.md` or `bugfix_*.md`, plus
+`epic.md` for epic-scoped work. It should keep scope tight, follow repository
+conventions, update implementation task checkboxes only when work is complete
+and task-level verification has passed, and stop for approval before materially
+changing the plan. Important durable design decisions discovered during
+implementation should be captured with `document-decisions` when they meet ADR
+criteria.
 
 Output: scoped code, test, migration, documentation, or configuration changes,
 plus updated work item status where appropriate.
 
-### 9. Validate Implementation
+### 10. Validate Implementation
 
 Use `validate-implementation` after implementation is complete or ready for objective
 checking.
 
-Validation checks implemented work against the written Product Vision when present, epic,
-selected story or bugfix plan, implementation task verification steps,
-verification matrix rows, and repository quality gates. It records pass, fail,
-partial, blocked, skipped checks, command output, evidence, and gaps in the
-selected work item file.
+Validation checks implemented work against the written Product Vision when
+present, active epic when present, selected story or bugfix plan, implementation
+task verification steps, verification matrix rows, and repository quality gates.
+It records pass, fail, partial, blocked, skipped checks, command output,
+evidence, and gaps in the selected work item file.
 
 Output: updated `Final Validation`, `Verification Matrix`, and
 `Validation Result` sections in the selected story or bugfix.
 
-### 10. Update Current System Knowledge
+### 11. Update Current System Knowledge
 
 Use `document-current-system` when `validate-implementation` returns `Pass`, when a
 `Partial` result is explicitly approved for current-state documentation, or when
@@ -320,7 +412,7 @@ routes each fact to the correct concern under `docs/knowledge/<concern>/`.
 
 Output: created or updated concern specs.
 
-### 11. Archive Completed Epics
+### 12. Archive Completed History
 
 Use `archive-epic` when implementation, validation, and system-state updates are
 complete, or when an epic is intentionally closed.
@@ -328,6 +420,11 @@ complete, or when an epic is intentionally closed.
 Archiving writes a final summary, preserves validation evidence and decision
 links, records deferred or cancelled work, and moves the epic folder from
 `docs/epics/active/<epic>/` to `docs/epics/archived/<epic>/`.
+
+Completed standalone changes may be moved from `docs/standalone-changes/active/`
+to `docs/standalone-changes/archived/` after validation and any required
+current-system documentation. They do not require `archive-epic` unless the
+project adds a dedicated standalone archive skill.
 
 Output: archived epic folder and archive summary.
 

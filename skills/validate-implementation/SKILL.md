@@ -1,6 +1,6 @@
 ---
 name: validate-implementation
-description: Validate implemented code against one story or bugfix work plan and repository quality gates, then update that work item with results. Use after `implement-work-item` when implementation is complete or partially complete and the active epic needs objective validation before state evolution or archiving.
+description: Validate implemented code against one epic-scoped or standalone story or bugfix work plan and repository quality gates, then update that work item with results. Use after `implement-work-item` when implementation is complete or partially complete and objective validation is needed before state evolution or archiving.
 ---
 
 # Validate Implementation
@@ -12,8 +12,10 @@ Validate implemented work against the written story or bugfix plan, not memory. 
 ## Workflow
 
 1. Load verification context:
-   - Read one `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`.
-   - Read `docs/vision.md` when present and `docs/epics/active/<epic>/epic.md`.
+   - Read one epic-scoped work item under `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`, or one standalone work item under `docs/standalone-changes/active/stories/story_*.md` or `docs/standalone-changes/active/bugfixes/bugfix_*.md`.
+   - Read `docs/vision.md` when present.
+   - For epic-scoped work, read `docs/epics/active/<epic>/epic.md`.
+   - For standalone work, read active epics and sibling standalone changes when placement or regression scope may be affected.
    - Inspect package scripts, CI config, test files, benchmark scripts, migrations, and runbooks referenced by the work item.
    - Check repository status to understand implementation scope and uncommitted changes.
 
@@ -21,7 +23,7 @@ Validate implemented work against the written story or bugfix plan, not memory. 
    - Check that code, tests, migrations, configuration, documentation, and operational changes cover every completed implementation task.
    - Check that acceptance criteria, expected behavior, unchanged behavior, and pass criteria are satisfied by executable checks or documented evidence.
    - Check that every verification matrix row has a result.
-   - Check that implemented behavior stays within work item and epic scope and no out-of-scope behavior was added.
+   - Check that implemented behavior stays within work item scope and selected placement and no out-of-scope behavior was added.
 
 3. Execute quality gates:
    - Run work-item verification commands where possible.
@@ -41,7 +43,7 @@ Validate implemented work against the written story or bugfix plan, not memory. 
 
 ## Validation Checklist
 
-- [ ] Results map back to epic scope, work item criteria, and implementation task verification.
+- [ ] Results map back to placement scope, work item criteria, and implementation task verification.
 - [ ] Implemented code covers completed implementation tasks and criteria.
 - [ ] Required tests were added or updated where relevant.
 - [ ] Linters, formatters, type checks, builds, migrations, tests, or CI-equivalent checks passed or have documented gaps.

@@ -1,6 +1,6 @@
 ---
 name: document-decisions
-description: Capture important design decisions, rationale, consequences, and tradeoffs as ADRs under `docs/adrs`. Use only when an epic plan, implementation, validation, or system-state update includes an important durable decision that future maintainers must understand.
+description: Capture important design decisions, rationale, consequences, and tradeoffs as ADRs under `docs/adrs`. Use only when a Product Vision, epic plan, standalone change, implementation, validation, or system-state update includes an important durable decision that future maintainers must understand.
 ---
 
 # Document Decisions
@@ -28,11 +28,11 @@ Do not write ADRs for:
 ## Workflow
 
 1. Identify decision:
-   - Read the available phase evidence: Product Vision, `docs/epics/active/<epic>/epic.md`, story or bugfix files, validation results, relevant concern specs, and implementation evidence when those artifacts already exist.
+   - Read the available phase evidence: Product Vision, `docs/epics/active/<epic>/epic.md` when present, standalone change files when present, story or bugfix files, validation results, relevant concern specs, and implementation evidence when those artifacts already exist.
    - Confirm the decision is important and durable because it affects architecture, data, security, operations, infrastructure, platform contracts, long-term product behavior, or another high-consequence concern.
    - Confirm the decision matches at least one "Write ADRs for" category and none of the "Do not write ADRs for" exclusions.
    - Skip ADR creation when the decision is routine, easily reversible, purely local to one implementation detail, dictated by existing requirements, has only one viable option, or is already obvious from code and current-system docs.
-   - If the decision is only a candidate and durable rationale is not yet available, record it in the owning Product Vision, epic, story, or bugfix artifact instead of forcing an ADR.
+   - If the decision is only a candidate and durable rationale is not yet available, record it in the owning Product Vision, epic, standalone change, story, or bugfix artifact instead of forcing an ADR.
 
 2. Capture rationale:
    - State context, options, decision, consequences, tradeoffs, and follow-up work.

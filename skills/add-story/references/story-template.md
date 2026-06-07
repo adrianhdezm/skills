@@ -3,21 +3,32 @@
 ## Status
 
 - State: Draft
-- Epic: `docs/epics/active/<epic>/epic.md`
+- Placement: Epic-scoped or Standalone Change
+- Epic: `docs/epics/active/<epic>/epic.md` or N/A
 - Product Vision: `docs/vision.md`
 - Created: <YYYY-MM-DD>
 - Updated: <YYYY-MM-DD>
 - Owner: <name or team>
 
+## Routing Decision
+
+- Placement: <Epic-scoped or Standalone Change>
+- Reason: <Why this story belongs in the selected placement>
+- Active epics checked:
+  - <epic path or name>: <Fit or non-fit reason>
+- Product Vision impact: <No change, supports existing direction, or requires update>
+- Epic needed: <Yes or No and why>
+- Routed by: <plan-change, user selection, or direct epic scope>
+
 ## Sources
 
-- `docs/epics/active/<epic>/epic.md`
+- `docs/epics/active/<epic>/epic.md` or N/A
 - `docs/vision.md`
 - <Relevant concern specs, code paths, docs, tests, designs, or operational references>
 
 ## Intent
 
-<Why this story exists and what value it delivers inside the epic.>
+<Why this story exists and what value it delivers inside the epic or as a standalone change.>
 
 ## Scope
 
@@ -71,7 +82,7 @@ Use EARS notation where possible.
 - [ ] All implementation task verification passed.
 - [ ] Every acceptance criterion has matching verification evidence.
 - [ ] Every regression boundary has matching verification evidence.
-- [ ] Implemented behavior stays within story and epic scope.
+- [ ] Implemented behavior stays within story scope and selected placement.
 - [ ] No out-of-scope Product Vision, epic, story, or bugfix behavior was accidentally implemented.
 
 ## Validation Result

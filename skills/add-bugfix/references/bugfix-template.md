@@ -3,15 +3,26 @@
 ## Status
 
 - State: Draft
-- Epic: `docs/epics/active/<epic>/epic.md`
+- Placement: Epic-scoped or Standalone Change
+- Epic: `docs/epics/active/<epic>/epic.md` or N/A
 - Product Vision: `docs/vision.md` or N/A
 - Created: <YYYY-MM-DD>
 - Updated: <YYYY-MM-DD>
 - Owner: <name or team>
 
+## Routing Decision
+
+- Placement: <Epic-scoped or Standalone Change>
+- Reason: <Why this bugfix belongs in the selected placement>
+- Active epics checked:
+  - <epic path or name>: <Fit or non-fit reason>
+- Product Vision impact: <No change, supports existing direction, or requires update>
+- Epic needed: <Yes or No and why>
+- Routed by: <plan-change, user selection, or direct epic scope>
+
 ## Sources
 
-- `docs/epics/active/<epic>/epic.md`
+- `docs/epics/active/<epic>/epic.md` or N/A
 - <Issue, report, log, test failure, user request, concern spec, code path, or operational reference>
 
 ## Current Behavior
@@ -98,7 +109,7 @@
 
 - Decision: Pending
 - Evidence:
-  - <Repro evidence, root cause evidence, epic scope item, concern spec, code path, or review note>
+  - <Repro evidence, root cause evidence, placement scope item, concern spec, code path, or review note>
 - Gaps:
   - <Missing reproduction, unclear expected behavior, weak unchanged behavior, overbroad fix, or blocked question>
 
@@ -108,7 +119,7 @@
 - [ ] Reproduction evidence proves the bug exists or explains why deterministic reproduction is not practical.
 - [ ] Fixed behavior satisfies expected behavior.
 - [ ] Unchanged behavior and regression boundaries still pass.
-- [ ] Implemented behavior stays within bugfix and epic scope.
+- [ ] Implemented behavior stays within bugfix scope and selected placement.
 - [ ] No out-of-scope behavior, refactor, or cleanup was accidentally implemented.
 
 ## Validation Result

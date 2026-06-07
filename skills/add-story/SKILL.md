@@ -1,40 +1,45 @@
 ---
 name: add-story
-description: Add or extend one validated epic with one scoped story file under `docs/epics/active/<epic>/stories/story_<name>.md`. Use when the user has chosen a specific planned value slice to create. Use `suggest-stories` first when the user wants to discover or plan multiple stories for an epic.
+description: Add one scoped story file either under a validated active epic or under `docs/standalone-changes/active/stories/`. Use when the user has chosen a specific planned value slice, or after `plan-change` routes a request to story planning.
 ---
 
 # Add Story
 
 ## Core Rule
 
-Add exactly one story to an existing active epic. A story is the implementation source of truth for one planned value slice inside the epic; implementation tasks live inside the story file as a checklist. Do not use stories for defects that need root cause and regression preservation; use `add-bugfix` instead. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Add exactly one story. A story is the implementation source of truth for one planned value slice; implementation tasks live inside the story file as a checklist. Place the story inside an active epic when it fits that epic, or under `docs/standalone-changes/active/stories/` when it is self-contained and no active epic or new epic is needed. Do not use stories for defects that need root cause and regression preservation; use `add-bugfix` instead. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
 1. Load inputs:
-   - Read `docs/epics/active/<epic>/epic.md` and its source `docs/vision.md`.
-   - Read existing `stories/story_*.md` and `bugfixes/bugfix_*.md` in the epic.
+   - If an epic is provided, read `docs/epics/active/<epic>/epic.md` and its source `docs/vision.md`.
+   - If no epic is provided, read `docs/vision.md` when present, active epics under `docs/epics/active/`, and standalone changes under `docs/standalone-changes/active/`.
+   - Read existing sibling `stories/story_*.md` and `bugfixes/bugfix_*.md` for the selected placement.
    - Inspect relevant code, tests, docs, and concern specs.
    - If the user asks to plan or create all stories needed for the epic, recommend `suggest-stories` before creating files.
 
 2. Confirm fit:
-   - Verify the requested story is within the epic scope.
-   - If it changes the epic outcome, success criteria, implementation strategy, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
+   - For epic-scoped stories, verify the requested story is within the epic scope.
+   - For standalone stories, verify the requested story does not fit an active epic, does not need a new epic, and does not materially change the Product Vision.
+   - If an epic-scoped story changes the epic outcome, success criteria, implementation strategy, rollout, or risk profile, stop and recommend updating `epic.md` and re-running `validate-epic`.
+   - If a standalone story needs multiple coordinated work items, rollout/backout planning, cross-cutting risk tracking, or durable product direction changes, stop and recommend `plan-change`, `create-epic`, or `define-product-vision` as appropriate.
    - If it is a defect fix, use `add-bugfix`.
 
 3. Write the story:
-   - Create or update `docs/epics/active/<epic>/stories/story_<story-slug>.md`.
+   - For epic-scoped placement, create or update `docs/epics/active/<epic>/stories/story_<story-slug>.md`.
+   - For standalone placement, create or update `docs/standalone-changes/active/stories/story_<story-slug>.md`.
    - Use [references/story-template.md](references/story-template.md).
+   - For standalone placement, include a `Routing Decision` section that records placement, reason, active epics checked, Product Vision impact, epic need, and `plan-change` when it supplied the route.
    - Include acceptance criteria, non-goals, dependencies, implementation tasks, verification, and validation sections.
-   - Keep existing child work item statuses intact.
+   - Keep existing sibling work item statuses intact.
 
 4. Report result:
    - Provide the absolute story path.
-   - Summarize epic fit, assumptions, first implementation task, and recommend `validate-work-plan`.
+   - Summarize placement fit, assumptions, first implementation task, and recommend `validate-work-plan`.
 
 ## Validation Checklist
 
-- [ ] Story is inside the epic scope.
+- [ ] Story is inside the epic scope, or has a recorded standalone routing decision.
 - [ ] Story has user or system value and testable acceptance criteria.
 - [ ] Non-goals and regression boundaries are explicit where relevant.
 - [ ] Implementation tasks are ordered, concrete, and independently checkable.

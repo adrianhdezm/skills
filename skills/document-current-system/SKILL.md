@@ -43,7 +43,7 @@ Tie-breakers:
 ## Workflow
 
 1. Load evidence:
-   - Read relevant `docs/vision.md`, `docs/epics/active/<epic>/epic.md`, stories, bugfixes, and validation results when present.
+   - Read relevant `docs/vision.md`, `docs/epics/active/<epic>/epic.md`, standalone changes, stories, bugfixes, and validation results when present.
    - Inspect implemented code, migrations, configuration, docs, tests, scripts, CI, deployment, and operational artifacts.
    - Read existing concern specs under `docs/knowledge/`.
 

@@ -1,7 +1,7 @@
 {
   "name": "cortex",
   "version": "0.1.0",
-  "description": "Concern-centric planning, story, bugfix, implementation, validation, and system documentation skills for Codex.",
+  "description": "Concern-centric change planning, story, bugfix, implementation, validation, and system documentation skills for Codex.",
   "author": {
     "name": "Adrian Hernandez Mendez"
   },
@@ -16,11 +16,12 @@
   "interface": {
     "displayName": "Cortex",
     "shortDescription": "Run concern-centric product and system change workflows.",
-    "longDescription": "Cortex packages a full Codex delivery process: define one durable Product Vision from product intent, suggest candidate epics when decomposition is needed, create executable epics one at a time, suggest story candidates inside active epics, add scoped stories and surgical bugfixes, validate work plans before coding, implement scoped changes, validate implementations against quality gates, document current system knowledge, capture durable decisions as ADRs, and archive completed epic history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
+    "longDescription": "Cortex packages a full Codex delivery process: define one durable Product Vision from product intent, plan incoming changes, suggest candidate epics when decomposition is needed, create executable epics one at a time, suggest story candidates inside active epics, add scoped stories and surgical bugfixes inside epics or as standalone changes, validate work plans before coding, implement scoped changes, validate implementations against quality gates, document current system knowledge, capture durable decisions as ADRs, and archive completed history. It also includes a skill-authoring workflow for maintaining reusable agent skills.",
     "developerName": "Adrian Hernandez Mendez",
     "category": "Developer Tools",
     "capabilities": [
       "Product Vision Planning",
+      "Change Planning",
       "Epic Planning",
       "Story Planning",
       "Bugfix Planning",
@@ -32,6 +33,7 @@
     ],
     "defaultPrompt": [
       "Use Cortex to define the project Product Vision.",
+      "Use Cortex to plan this change and decide whether it belongs to an active epic, a standalone story, a standalone bugfix, or a new epic.",
       "Use Cortex to add, validate, and implement a story in this active epic.",
       "Use Cortex to add a surgical bugfix with regression checks.",
       "Use Cortex to document current system knowledge."
