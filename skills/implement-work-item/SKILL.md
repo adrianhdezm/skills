@@ -12,7 +12,7 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
 ## Workflow
 
 1. Load the plan:
-   - Read one epic-scoped work item under `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`, or one standalone work item under `docs/standalone-changes/active/stories/story_*.md` or `docs/standalone-changes/active/bugfixes/bugfix_*.md`.
+   - Read one epic-scoped work item under `docs/epics/active/<epic>/story_*.md` or `docs/epics/active/<epic>/bugfix_*.md`, or one standalone work item under `docs/standalone-changes/active/story_*.md` or `docs/standalone-changes/active/bugfix_*.md`.
    - For epic-scoped work, read `docs/epics/active/<epic>/epic.md`, its source Product Vision when present, and relevant `docs/knowledge/` concern specs.
    - For standalone work, read `docs/vision.md` when present, active epics when placement could affect scope, sibling standalone changes, and relevant `docs/knowledge/` concern specs.
    - Confirm the work item passed `validate-work-plan`, or record the user's explicit override and risk.

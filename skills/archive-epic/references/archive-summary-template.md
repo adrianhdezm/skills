@@ -9,8 +9,8 @@
 ## Sources
 
 - `docs/epics/active/<epic>/epic.md`
-- `docs/epics/active/<epic>/stories/story_<name>.md`
-- `docs/epics/active/<epic>/bugfixes/bugfix_<name>.md`
+- `docs/epics/active/<epic>/story_<name>.md`
+- `docs/epics/active/<epic>/bugfix_<name>.md`
 - <Updated concern specs, ADRs, validation reports, or implementation references>
 
 ## Outcome

@@ -12,7 +12,7 @@ Validate implemented work against the written story or bugfix plan, not memory. 
 ## Workflow
 
 1. Load verification context:
-   - Read one epic-scoped work item under `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`, or one standalone work item under `docs/standalone-changes/active/stories/story_*.md` or `docs/standalone-changes/active/bugfixes/bugfix_*.md`.
+   - Read one epic-scoped work item under `docs/epics/active/<epic>/story_*.md` or `docs/epics/active/<epic>/bugfix_*.md`, or one standalone work item under `docs/standalone-changes/active/story_*.md` or `docs/standalone-changes/active/bugfix_*.md`.
    - Read `docs/vision.md` when present.
    - For epic-scoped work, read `docs/epics/active/<epic>/epic.md`.
    - For standalone work, read active epics and sibling standalone changes when placement or regression scope may be affected.

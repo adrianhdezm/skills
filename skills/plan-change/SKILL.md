@@ -13,7 +13,7 @@ Route exactly one concrete change request to the correct Cortex planning path be
 
 1. Load routing context:
    - Read `docs/vision.md` when present.
-   - Read active epics under `docs/epics/active/`, including existing `stories/story_*.md` and `bugfixes/bugfix_*.md` when they affect fit.
+   - Read active epics under `docs/epics/active/`, including existing `story_*.md` and `bugfix_*.md` files when they affect fit.
    - Read existing standalone changes under `docs/standalone-changes/active/`.
    - Inspect relevant `docs/knowledge/`, code, tests, docs, issues, logs, or designs enough to classify the request.
 

@@ -14,7 +14,7 @@ Suggest candidate story boundaries for exactly one active epic; do not create or
 1. Load inputs:
    - Read exactly one `docs/epics/active/<epic>/epic.md`.
    - Read the source Product Vision when present.
-   - Read existing `stories/story_*.md` and `bugfixes/bugfix_*.md` in the epic.
+   - Read existing `story_*.md` and `bugfix_*.md` files in the epic.
    - Read relevant `docs/knowledge/` concern specs and inspect code, tests, or docs enough to understand current system boundaries.
 
 2. Analyze epic fulfillment:

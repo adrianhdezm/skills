@@ -21,15 +21,15 @@ planned or changed, not into the skills repository:
   updated by `define-product-vision`.
 - `docs/epics/active/<epic>/epic.md` - active epic plans created by
   `create-epic`.
-- `docs/epics/active/<epic>/stories/story_<name>.md` - planned value slices
+- `docs/epics/active/<epic>/story_<name>.md` - planned value slices
   added by `add-story`.
-- `docs/epics/active/<epic>/bugfixes/bugfix_<name>.md` - surgical defect fixes
+- `docs/epics/active/<epic>/bugfix_<name>.md` - surgical defect fixes
   added by `add-bugfix`.
 - `docs/epics/archived/<epic>/` - completed or closed epic history moved by
   `archive-epic`.
-- `docs/standalone-changes/active/stories/story_<name>.md` - planned value
+- `docs/standalone-changes/active/story_<name>.md` - planned value
   slices that do not belong to a current active epic and do not need a new epic.
-- `docs/standalone-changes/active/bugfixes/bugfix_<name>.md` - surgical defect
+- `docs/standalone-changes/active/bugfix_<name>.md` - surgical defect
   fixes that do not belong to a current active epic and do not need a new epic.
 - `docs/standalone-changes/archived/` - completed or closed standalone change
   history.
@@ -243,8 +243,8 @@ decision, `validate-work-plan`, `implement-work-item`, and
 
 Outputs:
 
-- `docs/standalone-changes/active/stories/story_<name>.md`
-- `docs/standalone-changes/active/bugfixes/bugfix_<name>.md`
+- `docs/standalone-changes/active/story_<name>.md`
+- `docs/standalone-changes/active/bugfix_<name>.md`
 
 ## Process Stages
 
@@ -352,10 +352,10 @@ belong to an active epic and does not need a new epic.
 
 Outputs:
 
-- `docs/epics/active/<epic>/stories/story_<name>.md`
-- `docs/epics/active/<epic>/bugfixes/bugfix_<name>.md`
-- `docs/standalone-changes/active/stories/story_<name>.md`
-- `docs/standalone-changes/active/bugfixes/bugfix_<name>.md`
+- `docs/epics/active/<epic>/story_<name>.md`
+- `docs/epics/active/<epic>/bugfix_<name>.md`
+- `docs/standalone-changes/active/story_<name>.md`
+- `docs/standalone-changes/active/bugfix_<name>.md`
 
 ### 8. Validate One Work Plan
 
