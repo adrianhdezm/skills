@@ -24,8 +24,9 @@ the supporting process documentation.
 - Cortex - a concern-centric development process for planned product and system
   changes. Cortex turns product intent into a single Product Vision, suggests
   epic and story options when needed, plans incoming changes, creates validated
-  epics one at a time, adds independently validated stories and bugfixes inside
-  those epics or as standalone changes, implements one story or bugfix at a time,
+  epics one at a time, adds ready or blocked stories and bugfixes inside those
+  epics or as standalone changes, implements one ready or partially implemented
+  story or bugfix at a time,
   records validation evidence, updates durable system knowledge, and archives
   completed history. Read
   [CORTEX.md](CORTEX.md) for the full process.
@@ -53,8 +54,8 @@ by ADH marketplace.
 - `add-story` - add one planned value slice to an active epic or standalone changes.
 - `add-bugfix` - add one surgical bugfix to an active epic or standalone changes.
 - `validate-change-plan` - validate one story or bugfix plan before implementation.
-- `implement-change` - implement one validated story or bugfix.
-- `validate-implementation` - validate implemented work against the plan and quality gates.
+- `implement-change` - implement one ready or partially implemented story or bugfix.
+- `validate-implementation` - validate review-state work against the plan and quality gates.
 - `document-current-system` - update living concern knowledge.
 - `document-decisions` - capture important durable decisions as ADRs.
 - `archive-epic` - preserve completed or closed epic history.

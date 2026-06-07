@@ -32,6 +32,8 @@ Add exactly one story. A story is the implementation source of truth for one pla
    - For epic-scoped placement, create or update `docs/epics/active/<epic>/story_<story-slug>.md`.
    - For standalone placement, create or update `docs/standalone-changes/active/story_<story-slug>.md`.
    - Use [references/story-template.md](references/story-template.md).
+   - Set `State: Ready` when the story is actionable for implementation, or `State: Blocked` when required information, decisions, dependencies, access, ownership, or validation is missing.
+   - When `State: Blocked`, fill `Blocked By` with the concrete blocker. Do not use `N/A` for blocked stories.
    - For standalone placement, include a `Routing Decision` section that records placement, reason, active epics checked, Product Vision impact, epic need, and `plan-change` when it supplied the route.
    - Include acceptance criteria, non-goals, dependencies, implementation tasks, verification, and validation sections.
    - Keep existing sibling story or bugfix statuses intact.
@@ -48,4 +50,5 @@ Add exactly one story. A story is the implementation source of truth for one pla
 - [ ] Non-goals and regression boundaries are explicit where relevant.
 - [ ] Implementation tasks are ordered, concrete, and independently checkable.
 - [ ] Verification includes commands or evidence methods with pass criteria.
+- [ ] Status is `Ready`, or `Blocked` with a concrete `Blocked By` value.
 - [ ] Story can feed `validate-change-plan`.

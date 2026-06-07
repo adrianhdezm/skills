@@ -2,7 +2,8 @@
 
 ## Status
 
-- State: Draft
+- State: Ready
+- Blocked By: N/A
 - Placement: Epic-scoped or Standalone Change
 - Epic: `docs/epics/active/<epic>/epic.md` or N/A
 - Product Vision: `docs/vision.md`

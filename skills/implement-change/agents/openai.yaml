@@ -1,4 +1,4 @@
 interface:
   display_name: "Implement Change"
   short_description: "Build one story or bugfix"
-  default_prompt: "Use $implement-change to read one validated epic-scoped or standalone story or bugfix and implement its scoped code, tests, docs, config, or migration changes."
+  default_prompt: "Use $implement-change to read one ready or partially implemented epic-scoped or standalone story or bugfix, implement its scoped code, tests, docs, config, or migration changes, and move it to review."

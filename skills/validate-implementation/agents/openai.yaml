@@ -1,4 +1,4 @@
 interface:
   display_name: "Validate Implementation"
   short_description: "Validate code and quality gates"
-  default_prompt: "Use $validate-implementation to verify implemented code covers one epic-scoped or standalone story or bugfix and all relevant tests, linters, formatters, and quality gates pass."
+  default_prompt: "Use $validate-implementation to verify all review-state epic-scoped and standalone stories or bugfixes, run relevant tests, linters, formatters, and quality gates, and update their workflow states."

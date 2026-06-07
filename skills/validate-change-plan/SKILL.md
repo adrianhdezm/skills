@@ -1,13 +1,13 @@
 ---
 name: validate-change-plan
-description: Validate one epic-scoped or standalone story or bugfix change plan before implementation. Use after `add-story` or `add-bugfix` to confirm the planned work fits its selected placement, has concrete implementation tasks, and includes executable verification without blocking gaps.
+description: Validate one epic-scoped or standalone story or bugfix change plan before implementation. Use after `add-story` or `add-bugfix` to confirm or correct the selected artifact's `Ready` or `Blocked` state.
 ---
 
 # Validate Change Plan
 
 ## Core Rule
 
-Validate the written story or bugfix plan, not memory. Confirm exactly one change plan is ready to feed `implement-change`: it fits its selected placement, has complete implementation tasks, concrete verification, and no blocking open questions. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Validate the written story or bugfix plan, not memory. Confirm exactly one change plan is ready to feed `implement-change`: it fits its selected placement, has complete implementation tasks, concrete verification, and no blocking open questions. Keep the selected artifact state aligned with the result: passing plans are `Ready`; non-passing plans are `Blocked` with `Blocked By` filled. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -30,6 +30,9 @@ Validate the written story or bugfix plan, not memory. Confirm exactly one chang
 
 4. Update validation status:
    - Update the selected story or bugfix's `Change Plan Validation` section with evidence, gaps, skipped checks, and a decision: `Pass`, `Fail`, `Partial`, or `Blocked`.
+   - Set `State: Ready` when the decision is `Pass`.
+   - Set `State: Blocked` and fill `Blocked By` with the concrete plan gap, dependency, question, or validation blocker when the decision is `Fail`, `Partial`, or `Blocked`.
+   - Set `Blocked By: N/A` when the artifact is `Ready`.
    - Add remediation implementation tasks or notes when coverage or verification is missing.
    - Do not implement code; implementation belongs to `implement-change`.
 
@@ -45,4 +48,5 @@ Validate the written story or bugfix plan, not memory. Confirm exactly one chang
 - [ ] Every implementation task has concrete verification and pass criteria.
 - [ ] Blocking open questions are resolved or recorded as `Blocked`.
 - [ ] Result includes an overall decision: `Pass`, `Fail`, `Partial`, or `Blocked`.
+- [ ] State is aligned to `Ready`, or `Blocked` with a concrete `Blocked By` value.
 - [ ] Passing change plan can feed `implement-change`.

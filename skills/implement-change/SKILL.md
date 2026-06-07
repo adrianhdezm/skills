@@ -1,13 +1,13 @@
 ---
 name: implement-change
-description: Implement one validated epic-scoped or standalone story or bugfix as scoped code, test, migration, documentation, and configuration changes. Use after `validate-change-plan` returns `Pass`, or when the user explicitly accepts the risk of implementing an unvalidated or partially validated change plan.
+description: Implement one ready or partially implemented epic-scoped or standalone story or bugfix as scoped code, test, migration, documentation, and configuration changes. Use when the selected story or bugfix is actionable and should move to review.
 ---
 
 # Implement Change
 
 ## Core Rule
 
-Implement exactly one story or bugfix with tight scope, explicit intent, and continuous verification. Normally start only after `validate-change-plan` returns `Pass`; if the user explicitly overrides a missing, `Partial`, `Fail`, or `Blocked` validation result, record that risk before coding. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Implement exactly one story or bugfix with tight scope, explicit intent, and continuous verification. Only implement artifacts with `State: Ready` or `State: Partial Implemented`. If the selected artifact is `Blocked`, resolve and record the blocker before coding; if it is `Review` or `Implemented`, do not implement it again unless the user explicitly reopens the artifact. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -15,7 +15,7 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
    - Read one epic-scoped story or bugfix under `docs/epics/active/<epic>/story_*.md` or `docs/epics/active/<epic>/bugfix_*.md`, or one standalone story or bugfix under `docs/standalone-changes/active/story_*.md` or `docs/standalone-changes/active/bugfix_*.md`.
    - For epic-scoped work, read `docs/epics/active/<epic>/epic.md`, its source Product Vision when present, and relevant `docs/knowledge/` concern specs.
    - For standalone work, read `docs/vision.md` when present, active epics when placement could affect scope, sibling standalone changes, and relevant `docs/knowledge/` concern specs.
-   - Confirm the change plan passed `validate-change-plan`, or record the user's explicit override and risk.
+   - Confirm the selected story or bugfix has `State: Ready` or `State: Partial Implemented`.
    - Check repository status and avoid overwriting unrelated user changes.
    - Extract requirements, expected behavior, unchanged behavior, constraints, implementation tasks, verification steps, and out-of-scope behavior.
 
@@ -50,13 +50,14 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
    - Raise any remaining mismatch that changes scope, success criteria, or durable design intent.
 
 7. Report result:
+   - Update the selected story or bugfix to `State: Review` and `Blocked By: N/A` when the implementation attempt is ready for validation.
    - Summarize completed implementation tasks, modified files, commands run, failures, assumptions, plan drift, and remaining work.
    - Recommend `validate-implementation` when implementation is ready for full verification.
 
 ## Validation Checklist
 
 - [ ] Work matches the selected story or bugfix and its selected placement.
-- [ ] Change plan validation status was checked.
+- [ ] Selected story or bugfix started in `Ready` or `Partial Implemented`.
 - [ ] Requirements, constraints, verification steps, and out-of-scope behavior were extracted before implementation.
 - [ ] Bugfix reproduction coverage was added, confirmed, or explicitly impractical.
 - [ ] Blocking ambiguities were resolved before coding affected requirements.
@@ -64,4 +65,5 @@ Implement exactly one story or bugfix with tight scope, explicit intent, and con
 - [ ] Important durable design choices were documented with `document-decisions` when needed.
 - [ ] Relevant tests or checks were run.
 - [ ] Implementation task status reflects reality.
+- [ ] Selected story or bugfix state was updated to `Review` when ready for validation.
 - [ ] Any plan drift is corrected, approved, documented, or raised.

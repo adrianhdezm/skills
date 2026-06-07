@@ -264,14 +264,13 @@ story or bugfix fits its placement, preserves scope, includes executable
 verification, and does not contradict the Product Vision, active epic when
 present, concern knowledge, or sibling work.
 
-Use `implement-change` after `validate-change-plan` passes and the user wants
-the work built. If the user explicitly asks to implement an unvalidated or
-partially validated change plan, record the override and risk before coding.
+Use `implement-change` when one story or bugfix is in `State: Ready` or
+`State: Partial Implemented` and the user wants the work built.
 
-Use `validate-implementation` after implementation is complete or ready for
-objective checking. It records pass, fail, partial, blocked, skipped checks,
-command output, evidence, and remaining gaps in the selected story or bugfix
-file.
+Use `validate-implementation` after implementation moves stories or bugfixes to
+`State: Review`. It validates all review-state stories and bugfixes, then
+records pass, fail, partial, blocked, skipped checks, command output, evidence,
+remaining gaps, and the next workflow state in each reviewed artifact.
 
 ### Knowledge And History
 
@@ -320,14 +319,24 @@ planned or changed, not into the skills repository:
 
 ## Validation Gates
 
+Story and bugfix workflow states are:
+
+- `Ready` - the story or bugfix is actionable and may be implemented.
+- `Blocked` - implementation or validation cannot proceed; `Blocked By` must
+  name the concrete blocker.
+- `Review` - implementation has been attempted and must be validated.
+- `Implemented` - validation passed and the scoped work is implemented.
+- `Partial Implemented` - validation found some scoped behavior is valid, but
+  known implementation gaps remain.
+
 The process has three explicit gates:
 
 - `validate-epic` decides whether one active epic can accept stories and
   bugfixes.
 - `validate-change-plan` decides whether one story or bugfix plan can feed
   implementation.
-- `validate-implementation` decides whether implemented work satisfies the
-  selected story or bugfix plan.
+- `validate-implementation` decides whether review-state implemented work
+  satisfies each story or bugfix plan.
 
 Validation decisions use these result values:
 
@@ -345,18 +354,25 @@ Gate transitions:
   - `Partial` does not allow child artifacts unless the user explicitly accepts
     the documented gaps and the child work does not depend on them.
 - `validate-change-plan`:
-  - `Pass` allows `implement-change`.
-  - `Fail`, `Partial`, or `Blocked` should be corrected before implementation.
-  - A user may explicitly override a missing or non-passing result; record the
-    override and risk in the selected story or bugfix before coding.
+  - `Pass` confirms the story or bugfix can remain or become `Ready`.
+  - `Fail`, `Partial`, or `Blocked` should be corrected before implementation;
+    use `Blocked` and `Blocked By` when a blocker prevents action.
+- `implement-change`:
+  - Only `Ready` or `Partial Implemented` stories and bugfixes may be
+    implemented.
+  - When implementation is ready for objective validation, set `State: Review`.
 - `validate-implementation`:
-  - `Pass` allows `document-current-system` and epic completion checks.
-  - `Partial` allows `document-current-system` or epic closure only when the
-    user explicitly approves the remaining gaps and the documented facts are
-    true current system state.
-  - `Fail` or `Blocked` should return to `implement-change`,
-    `validate-change-plan`, or the owning artifact skill before current-system
-    documentation or epic closure.
+  - Validate all stories and bugfixes with `State: Review`.
+  - `Pass` sets `State: Implemented` and allows `document-current-system` and epic
+    completion checks.
+  - `Partial` sets `State: Partial Implemented`; it allows
+    `document-current-system` or epic closure only when the user explicitly
+    approves the remaining gaps and the documented facts are true current system
+    state.
+  - `Fail` sets `State: Ready` so fixable implementation gaps can return to
+    `implement-change`.
+  - `Blocked` sets `State: Blocked` and requires `Blocked By` before
+    current-system documentation or epic closure.
 
 ## Decision Records
 

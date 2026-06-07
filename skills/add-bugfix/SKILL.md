@@ -31,6 +31,8 @@ Add exactly one bugfix. A bugfix is the implementation source of truth for corre
    - For epic-scoped placement, create or update `docs/epics/active/<epic>/bugfix_<bug-slug>.md`.
    - For standalone placement, create or update `docs/standalone-changes/active/bugfix_<bug-slug>.md`.
    - Use [references/bugfix-template.md](references/bugfix-template.md).
+   - Set `State: Ready` when the bugfix is actionable for implementation, or `State: Blocked` when required information, decisions, dependencies, access, ownership, reproduction evidence, or validation is missing.
+   - When `State: Blocked`, fill `Blocked By` with the concrete blocker. Do not use `N/A` for blocked bugfixes.
    - For standalone placement, include a `Routing Decision` section that records placement, reason, active epics checked, Product Vision impact, epic need, and `plan-change` when it supplied the route.
    - Include root cause, fix boundary, regression boundaries, implementation tasks, verification matrix, and validation sections.
 
@@ -47,4 +49,5 @@ Add exactly one bugfix. A bugfix is the implementation source of truth for corre
 - [ ] Epic-scoped bugfixes are added only under a passing epic validation, or an explicit `Partial` override is recorded.
 - [ ] Root cause and fix boundary are specific enough for surgical implementation.
 - [ ] Implementation tasks include repro, fix, and regression verification.
+- [ ] Status is `Ready`, or `Blocked` with a concrete `Blocked By` value.
 - [ ] Bugfix can feed `validate-change-plan`.

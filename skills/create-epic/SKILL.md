@@ -7,7 +7,7 @@ description: Create exactly one active epic plan under `docs/epics/active/<epic>
 
 ## Core Rule
 
-Create exactly one epic for a user-selected part of the single Product Vision. The required flow is `define-product-vision -> plan-change optional -> suggest-epics optional -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix`; `create-epic` must not slice the whole Product Vision, create sibling epics, or create child story or bugfix files. Each `docs/epics/active/<epic>/epic.md` owns one end-to-end delivery outcome and can later contain independently validated stories and bugfixes. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Create exactly one epic for a user-selected part of the single Product Vision. The required flow is `define-product-vision -> plan-change optional -> suggest-epics optional -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix`; `create-epic` must not slice the whole Product Vision, create sibling epics, or create child story or bugfix files. Each `docs/epics/active/<epic>/epic.md` owns one end-to-end delivery outcome and can later contain independently implemented and validated stories and bugfixes. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
