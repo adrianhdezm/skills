@@ -17,7 +17,7 @@ Create exactly one epic for a user-selected part of the single Product Vision. T
    - If the user asks to brainstorm or discover multiple epic options, recommend `suggest-epics` first.
 
 2. Load inputs:
-   - Read the Product Vision from `docs/product-vision.md`.
+   - Read the Product Vision from `docs/vision.md`.
    - Read relevant `docs/knowledge/` concern specs and active epics.
    - Inspect code and docs enough to understand current system boundaries, existing behavior, and related work.
 

@@ -17,7 +17,7 @@ artifact instead of relying on memory or conversation context.
 Generated project artifacts are written into the target repository that is being
 planned or changed, not into the skills repository:
 
-- `docs/product-vision.md` - the single project-level product vision created or
+- `docs/vision.md` - the single project-level product vision created or
   updated by `define-product-vision`.
 - `docs/epics/active/<epic>/epic.md` - active epic plans created by
   `create-epic`.
@@ -187,10 +187,10 @@ assumptions, open questions, and references. It should stay strategic and avoid
 feature scope, acceptance criteria, implementation details, verification plans,
 dependencies, rollout plans, and risk registers. Those details belong in epics,
 stories, and bugfixes.
-There is only one Product Vision per project; update `docs/product-vision.md`
+There is only one Product Vision per project; update `docs/vision.md`
 only when the stable product direction changes.
 
-Output: `docs/product-vision.md`.
+Output: `docs/vision.md`.
 
 ### 2. Suggest Epic Options
 

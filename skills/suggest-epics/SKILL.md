@@ -12,7 +12,7 @@ Suggest candidate epic boundaries from the single project Product Vision; do not
 ## Workflow
 
 1. Load inputs:
-   - Read the source Product Vision from `docs/product-vision.md`.
+   - Read the source Product Vision from `docs/vision.md`.
    - Read existing `docs/epics/active/*/epic.md`.
    - Read relevant `docs/epics/archived/*/epic.md` and archive summaries when they inform overlap, precedent, cancelled scope, deferred scope, sequencing, or lessons from completed work.
    - Read relevant `docs/knowledge/` concern specs and inspect code or docs enough to understand current system boundaries.

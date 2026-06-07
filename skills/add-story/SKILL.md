@@ -12,7 +12,7 @@ Add exactly one story to an existing active epic. A story is the implementation 
 ## Workflow
 
 1. Load inputs:
-   - Read `docs/epics/active/<epic>/epic.md` and its source `docs/product-vision.md`.
+   - Read `docs/epics/active/<epic>/epic.md` and its source `docs/vision.md`.
    - Read existing `stories/story_*.md` and `bugfixes/bugfix_*.md` in the epic.
    - Inspect relevant code, tests, docs, and concern specs.
    - If the user asks to plan or create all stories needed for the epic, recommend `suggest-stories` before creating files.

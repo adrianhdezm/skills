@@ -4,12 +4,12 @@
 
 - State: Active
 - Created: <YYYY-MM-DD>
-- Source Product Vision: `docs/product-vision.md`
+- Source Product Vision: `docs/vision.md`
 - Owner: <name or team>
 
 ## Sources
 
-- `docs/product-vision.md`
+- `docs/vision.md`
 - <Relevant concern specs, active epics, code paths, docs, designs, or operational references>
 
 ## Intent

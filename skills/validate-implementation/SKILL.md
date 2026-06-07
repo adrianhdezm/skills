@@ -13,7 +13,7 @@ Validate implemented work against the written story or bugfix plan, not memory. 
 
 1. Load verification context:
    - Read one `docs/epics/active/<epic>/stories/story_*.md` or `docs/epics/active/<epic>/bugfixes/bugfix_*.md`.
-   - Read `docs/product-vision.md` when present and `docs/epics/active/<epic>/epic.md`.
+   - Read `docs/vision.md` when present and `docs/epics/active/<epic>/epic.md`.
    - Inspect package scripts, CI config, test files, benchmark scripts, migrations, and runbooks referenced by the work item.
    - Check repository status to understand implementation scope and uncommitted changes.
 

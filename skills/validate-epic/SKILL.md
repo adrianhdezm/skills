@@ -12,7 +12,7 @@ Validate one epic plan against the written Product Vision, not memory. Confirm t
 ## Workflow
 
 1. Load validation context:
-   - Read the source `docs/product-vision.md`.
+   - Read the source `docs/vision.md`.
    - Read exactly one target `docs/epics/active/<epic>/epic.md` file.
    - Read relevant `docs/knowledge/<concern>/` specs and existing active epics only when they affect this epic's scope, sequencing, ownership, overlap, or risk.
 

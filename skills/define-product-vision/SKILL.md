@@ -1,13 +1,13 @@
 ---
 name: define-product-vision
-description: Define the project-level product vision by turning product intent, problems, or business requests into one durable `docs/product-vision.md` file. Use when starting Cortex planning, establishing the shared product direction, or updating the single product vision before epic planning.
+description: Define the project-level product vision by turning product intent, problems, or business requests into one durable `docs/vision.md` file. Use when starting Cortex planning, establishing the shared product direction, or updating the single product vision before epic planning.
 ---
 
 # Define Product Vision
 
 ## Core Rule
 
-Maintain exactly one Product Vision per project at `docs/product-vision.md`. It is the stable project-level source of truth for why the product exists, who it serves, what outcomes matter, and what constraints shape delivery. The required flow is `define-product-vision -> suggest-epics optional -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix -> validate-work-plan`; use `suggest-epics` when the user needs brainstorming, vision slicing, or gap discovery. Epics drive specific changes; the Product Vision should change only when the durable product direction changes. Follow [references/clarification-policy.md](references/clarification-policy.md).
+Maintain exactly one Product Vision per project at `docs/vision.md`. It is the stable project-level source of truth for why the product exists, who it serves, what outcomes matter, and what constraints shape delivery. The required flow is `define-product-vision -> suggest-epics optional -> create-epic -> validate-epic -> suggest-stories optional -> add-story or add-bugfix -> validate-work-plan`; use `suggest-epics` when the user needs brainstorming, vision slicing, or gap discovery. Epics drive specific changes; the Product Vision should change only when the durable product direction changes. Follow [references/clarification-policy.md](references/clarification-policy.md).
 
 ## Workflow
 
@@ -18,12 +18,12 @@ Maintain exactly one Product Vision per project at `docs/product-vision.md`. It 
    - If the request is vague, ask the smallest set of questions needed to make planning possible.
 
 2. Inspect existing context:
-   - Read the existing `docs/product-vision.md` when present.
+   - Read the existing `docs/vision.md` when present.
    - Read `docs/knowledge/` and active epics when present.
    - Read project documentation when present.
    - Explore relevant routes/pages, domain models, API boundaries, auth or permission patterns, tests, adjacent UI flows, jobs, events, and integrations.
    - Surface contradictions between user input, reference material, documentation, code, or concern knowledge before drafting.
-   - If `docs/product-vision.md` already exists and the request does not change durable project direction, leave it intact and recommend `suggest-epics` or `create-epic` instead.
+   - If `docs/vision.md` already exists and the request does not change durable project direction, leave it intact and recommend `suggest-epics` or `create-epic` instead.
 
 3. Bound product intent:
    - Capture vision, problem, audience, goals, success signals, principles, constraints, non-goals, assumptions, open questions, and references.
@@ -38,8 +38,8 @@ Maintain exactly one Product Vision per project at `docs/product-vision.md`. It 
 
 5. Write the Product Vision:
    - Ensure `docs/` exists.
-   - Create or update only `docs/product-vision.md`; do not create feature-specific vision files or additional product vision documents.
-   - If `docs/product-vision.md` exists, preserve stable content and make the smallest update needed for the changed product direction.
+   - Create or update only `docs/vision.md`; do not create feature-specific vision files or additional product vision documents.
+   - If `docs/vision.md` exists, preserve stable content and make the smallest update needed for the changed product direction.
    - Use [references/product-vision-template.md](references/product-vision-template.md) and fill every section.
    - Scale Product Vision depth to project complexity while keeping every section useful.
 
@@ -50,7 +50,7 @@ Maintain exactly one Product Vision per project at `docs/product-vision.md`. It 
 ## Validation Checklist
 
 - [ ] Product vision, problem, audience, goals, success signals, constraints, non-goals, and references are captured.
-- [ ] Exactly one Product Vision path is used: `docs/product-vision.md`.
+- [ ] Exactly one Product Vision path is used: `docs/vision.md`.
 - [ ] Vision quality checked inconsistencies, ambiguity, conflicting constraints, unclear audience, unclear success signals, and hidden implementation commitments.
 - [ ] Relevant concern knowledge, active work, docs, modules, routes, and tests were inspected.
 - [ ] Contradictions or ambiguous decisions were resolved with the user.

@@ -4,7 +4,7 @@
 
 - State: Draft
 - Epic: `docs/epics/active/<epic>/epic.md`
-- Product Vision: `docs/product-vision.md`
+- Product Vision: `docs/vision.md`
 - Created: <YYYY-MM-DD>
 - Updated: <YYYY-MM-DD>
 - Owner: <name or team>
@@ -12,7 +12,7 @@
 ## Sources
 
 - `docs/epics/active/<epic>/epic.md`
-- `docs/product-vision.md`
+- `docs/vision.md`
 - <Relevant concern specs, code paths, docs, tests, designs, or operational references>
 
 ## Intent
