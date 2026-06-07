@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#
+# Usage:
+#   list-epic-child-work.sh <epic-slug-or-path> [target-repo-root]
+#
+# Example output:
+#   state	type	path	title
+#   Ready	story	docs/epics/active/auth/story_login.md	Add login flow
+#   Review	bugfix	docs/epics/active/auth/bugfix_session.md	Fix session expiry
 set -euo pipefail
 
 root="."

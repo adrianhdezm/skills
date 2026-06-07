@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#
+# Usage:
+#   list-active-epics.sh [target-repo-root]
+#
+# Example output:
+#   state	epic_validation_decision	path	title
+#   Active	Pass	docs/epics/active/auth/epic.md	Authentication
+#   Active	Blocked	docs/epics/active/billing/epic.md	Billing
 set -euo pipefail
 
 root="${1:-.}"

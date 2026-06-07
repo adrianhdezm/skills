@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#
+# Usage:
+#   list-actionable-work.sh [target-repo-root]
+#
+# Example output:
+#   state	type	path	title
+#   Ready	story	docs/epics/active/auth/story_login.md	Add login flow
+#   Partial Implemented	bugfix	docs/standalone-changes/active/bugfix_cache.md	Fix stale cache
 set -euo pipefail
 
 root="${1:-.}"

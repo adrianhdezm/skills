@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+#
+# Usage:
+#   summarize-epic-states.sh <epic-slug-or-path> [target-repo-root]
+#
+# Example output:
+#   epic	Active	Pass	docs/epics/active/auth/epic.md
+#   state	validation_decision	type	path	title
+#   Implemented	Pass	story	docs/epics/active/auth/story_login.md	Add login flow
+#   Partial Implemented	Partial	bugfix	docs/epics/active/auth/bugfix_session.md	Fix session expiry
 set -euo pipefail
 
 root="."

@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+#
+# Usage:
+#   list-documentable-work.sh [target-repo-root]
+#   list-documentable-work.sh --root <target-repo-root> --include-partial
+#
+# Example output:
+#   state	validation_decision	type	path	title
+#   Implemented	Pass	story	docs/epics/active/auth/story_login.md	Add login flow
+#   Partial Implemented	Partial	bugfix	docs/standalone-changes/active/bugfix_cache.md	Fix stale cache
 set -euo pipefail
 
 root="."

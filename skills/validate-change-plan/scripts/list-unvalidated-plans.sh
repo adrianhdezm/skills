@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+#
+# Usage:
+#   list-unvalidated-plans.sh [target-repo-root]
+#
+# Example output:
+#   state	plan_validation_decision	type	path	title
+#   Ready	Pending	story	docs/epics/active/auth/story_login.md	Add login flow
+#   Blocked	Missing	bugfix	docs/standalone-changes/active/bugfix_cache.md	Fix stale cache
 set -euo pipefail
 
 root="${1:-.}"
