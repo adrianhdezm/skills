@@ -1,4 +1,0 @@
-interface:
-  display_name: "Suggest Stories"
-  short_description: "Suggest story candidates"
-  default_prompt: "Use $suggest-stories to read one active epic and existing child work, identify missing value slices, and suggest story candidates for me to accept before creation."

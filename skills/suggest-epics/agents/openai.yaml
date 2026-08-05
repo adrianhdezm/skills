@@ -1,4 +1,0 @@
-interface:
-  display_name: "Suggest Epics"
-  short_description: "Suggest candidate epics"
-  default_prompt: "Use $suggest-epics to read the Product Vision plus active and archived epics, identify coverage gaps or options, and suggest candidate epics for me to accept before creation."

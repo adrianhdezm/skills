@@ -1,4 +1,0 @@
-interface:
-  display_name: "Plan Change"
-  short_description: "Route one change request"
-  default_prompt: "Use $plan-change to inspect the request and route it to an epic, an epic-scoped story or bugfix, or a standalone change before planning artifacts are written."

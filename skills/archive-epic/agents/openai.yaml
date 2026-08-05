@@ -1,4 +1,0 @@
-interface:
-  display_name: "Archive Epic"
-  short_description: "Archive completed epics"
-  default_prompt: "Use $archive-epic to review a completed active epic, write an archive summary, and move it to docs/epics/archived."
