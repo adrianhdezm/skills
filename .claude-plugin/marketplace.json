@@ -1,0 +1,14 @@
+{
+  "name": "adh-agent-utils",
+  "owner": {
+    "name": "Adrian Hernandez-Mendez"
+  },
+  "description": "Personal marketplace of reusable utilities for setting up and configuring a development environment with Claude Code.",
+  "plugins": [
+    {
+      "name": "dev-setup",
+      "source": "./plugins/dev-setup",
+      "description": "Skills for setting up and configuring a development environment machine — hooks, guardrails, and tooling conventions."
+    }
+  ]
+}
