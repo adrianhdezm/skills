@@ -1,4 +1,0 @@
-interface:
-  display_name: "Add Bugfix"
-  short_description: "Add a surgical bugfix"
-  default_prompt: "Use $add-bugfix to add one bugfix under an active epic or docs/standalone-changes/active with current, expected, unchanged behavior, root cause, and regression checks."

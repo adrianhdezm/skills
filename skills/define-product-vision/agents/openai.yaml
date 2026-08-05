@@ -1,4 +1,0 @@
-interface:
-  display_name: "Define Product Vision"
-  short_description: "Define the single Product Vision"
-  default_prompt: "Use $define-product-vision to clarify durable product direction, inspect concern knowledge, and create or update the single docs/vision.md for the validated planning flow."
