@@ -4,6 +4,10 @@
 
 set -euo pipefail
 
+# Fail open if jq is missing. A guardrail that can't parse its input should get
+# out of the way rather than print an error on every single Bash call.
+command -v jq >/dev/null 2>&1 || exit 0
+
 input=$(cat)
 cmd=$(echo "$input" | jq -r '.tool_input.command // empty')
 
@@ -24,10 +28,13 @@ DANGEROUS_PATTERNS=(
   "git clean --force"
   "git branch -D"
   "git branch --delete --force"
-  "git checkout \."
-  "git checkout -- \."
-  "git restore \."
-  "git restore -- \."
+  # Whole-tree pathspecs only. The trailing boundary keeps narrow, safe
+  # restores like `git checkout .gitignore` out of it; `..` stays blocked
+  # because it discards the parent directory too.
+  "git checkout \.\.?( |$)"
+  "git checkout -- \.\.?( |$)"
+  "git restore \.\.?( |$)"
+  "git restore -- \.\.?( |$)"
   "reset --hard"
 )
 
